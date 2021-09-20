@@ -1255,6 +1255,7 @@
                         $B(n,p)$ & $np$ & $np(1-p)$\\
                         Geom & $\dfrac{1}{p}$& $\dfrac{1-p}{p^2}$\\
                         Poisson & $\lambda$ & $\lambda$\\
+                        Rechteck & $\frac{a+b}{2}$ & $\frac{1}{12}(b-a)$\\
                         \hline
                     \end{tabular}
                 \end{center}
@@ -1400,7 +1401,8 @@
                 \begin{equation*}
                     T_n:\mathbb{R}^n \rightarrow \mathbb{R}
                 \end{equation*}
-                Sie ordnet einer Messreihe $x_1,\dots,x_n$ einen Schätzwert $T_n(x_1,\dots,x_n)$ (Zufallsvariable) für den unbekannten Wert $\tau(\theta)$ zu
+                Sie ordnet einer Messreihe $x_1,\dots,x_n$ einen Schätzwert $T_n(x_1,\dots,x_n)$ (Zufallsvariable) für den unbekannten Wert $\tau(\theta)$ zu\\
+                Die Zufallsvariable $T_n(X_1,\dots, X_n)$ heißt Schätzvariable.
             \end{definition}
             \begin{definition}
                 ein Schätzer $T_n:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt erwartungstreu für $\tau:\Theta \rightarrow \mathbb{R}$, falls gilt
@@ -1410,8 +1412,8 @@
             \end{definition}
             \begin{definition}
                 \begin{itemize}
-                    \item $\tau$ sei gegeben durch $\tau(\theta) = E_\theta(X) = \mu$. Das arithmetische mittel $\bar{X}_{(n)}$ ist ein erwartungstreuer Schätzer
-                    \item $\tau$ sei gegeben durch $\tau(\theta) = Var_\theta(X) = \mu$. Die Stichprobenvarianz $S^2_{(n)}$ ist ein erwartungstreuer Schätzer
+                    \item $\tau$ sei gegeben durch $\tau(\theta) = E_\theta(X) = \mu$. Das arithmetische mittel $\bar{X}_{(n)}$ ist ein erwartungstreuer Schätzer für $\mu$
+                    \item $\tau$ sei gegeben durch $\tau(\theta) = Var_\theta(X) = \mu$. Die Stichprobenvarianz $S^2_{(n)}$ ist ein erwartungstreuer Schätzer für $\sigma^2$
                 \end{itemize}
             \end{definition}
             \begin{definition}
@@ -1454,6 +1456,18 @@
                 dann ist die Folge von Schätzern konsistent für $tau$
             \end{satz}
         \subsection{Maximum-Likelihood-Schätzer}
+            Bei gegebener Verteilungsklasse $F_\theta, \theta \in \Theta$,
+            lassen sich Schätzer für den Parameter $\theta$ oft mit der Maximum-Likelihood-Methode gewinnen.
+            Sind die zugrundeliegenden Zufallsvariablen $X_1,\dots , X_n$ stetig mit einer Dichte verteilt, so
+            hängt diese ebenfalls von den Parametern ab:
+            \begin{equation*}
+                f_\theta(x), x \in \mathbb{R}.
+            \end{equation*}
+            Wir definieren hier $\mathbb{X} = \mathbb{R}$.
+            Im Fall diskreter Zufallsvariablen $X$, bzw. $X_1,\dots, X_n$ definieren wir
+            \begin{equation*}
+                f_\theta(x) = P_\theta(X = x) \text{ für alle x aus dem Wertebereich } \mathbb{X} \text{ von } X.
+            \end{equation*}
             \begin{definition}
                 Für eine Messreihe $x_1, \dots, x_n$ heißt die Funktion $L(\cdot;x_1,\dots,x_n)$ mit 
                 \begin{equation*}
@@ -1471,7 +1485,7 @@
                 \end{equation*}
                 heißt Maximum-Likelihood-Schätzwert für $\Theta$. Existiert dieser zu jeder möglichen Messreihe, dann heißt
                 \begin{equation*}
-                    T_n:\mathbf{X}^n\rightarrow \Theta \mbox{, }T_n(x_1,\dots,x_n) = \hat{\theta}(x_1, \dots, x_n)
+                    T_n:\mathbb{X}^n\rightarrow \Theta \mbox{, }T_n(x_1,\dots,x_n) = \hat{\theta}(x_1, \dots, x_n)
                 \end{equation*}
                 Maximum-Likelihood-Schätzern
             \end{definition}
@@ -1491,8 +1505,8 @@
                 Im Folgenden
                 \begin{align*}
                     F_\theta(x) &= F_{(\mu, \sigma^2)}(x)= \Phi(\dfrac{x-\mu}{\sigma}) &
-                    \bar{x}_{(n)}&=\dfrac{1}{n}\sum_{i=1}^n X_i
-                    s^2_{(n)} &= \dfrac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_{(n)})^2
+                    \bar{X}_{(n)}&=\dfrac{1}{n}\sum_{i=1}^n X_i &
+                    S^2_{(n)} &= \dfrac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_{(n)})^2
                 \end{align*}
                 Konfidenzintervalle zum Niveau $1-\alpha$:
                 \subsubsection*{Konfidenzintervall für $\mu$ bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
@@ -1504,7 +1518,7 @@
                 \subsubsection*{Konfidenzintervall für $\mu$ bei unbekannter Varianz $\sigma^2$}
                     Hier ist $\Theta = \{(\mu, \sigma^2_0):\mu \in \mathbb{R}, \sigma^2 > 0\}$ und $\tau(\theta) = \mu$. Das Konfidenzintervall für $\mu$ lautet
                     \begin{equation*}
-                        I(X_1,\dots,X_n)=\left[\bar{X}_{(n)}-t_{n-1;1-\alpha/2}\sqrt{\dfrac{s^2_{(n)}}{n}},\bar{X}_{(n)}+t_{n-1;1-\alpha/2}\sqrt{\dfrac{s^2_{(n)}}{n}}\right]
+                        I(X_1,\dots,X_n)=\left[\bar{X}_{(n)}-t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}},\bar{X}_{(n)}+t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}}\right]
                     \end{equation*}
                 \subsubsection*{Konfidenzintervall für $\sigma^2$ bei bekanntem Erwartungswert $\mu = \mu_0$}
                     Hier ist $\Theta = \{(\mu, \sigma^2_0):\sigma^2 > 0\}$ und $\tau(\theta) = \sigma^2$. Das Konfidenzintervall für $\sigma^2$ lautet
