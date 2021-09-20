@@ -759,7 +759,7 @@
             \subsubsection{Grundkonzepte numerischer Verfahren}
                 \textbf{Vektoriteration}
                 \begin{equation*}
-                    x^{(k+1)} = \dfrac{Bx^{(k)}}{||Bx^{(k)}}, \mbox{ mit } k=0,1,\dots
+                    x^{(k+1)} = \dfrac{Bx^{(k)}}{||Bx^{(k)}||}, \mbox{ mit } k=0,1,\dots
                 \end{equation*}
                 \textbf{Ähnlichkeitstransformation auf einfachere Gestalt}
                 Nach Definition 6.1.2 bleiben die Eigenwerte einer Matrix A bei einer Ähnlichkeitstransformation erhalten.
@@ -782,7 +782,7 @@
                     \begin{enumerate}[label=\alph*)]
                         \item \begin{align*}
                             \sigma(A) &\subset \bigcup_{i=1}^n K_i\\
-                            K_i &= \left\{\mu \in \mathbb{C}_ |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{(spaltensumme)}\right\}
+                            K_i &= \left\{\mu \in \mathbb{C}_ |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{(zeilensumme ohne diag)}\right\}
                         \end{align*}
                         \item ist die Vereinigung $G_1$ von k Greshgorin-kreisen disjunkt von der Vereinigung $G_2$ der restlichen
                         n-k Kreise, dann enthält $G_1$ genau k EWs udn $G_2$ genau n-k EWs von A
@@ -844,7 +844,7 @@
                 \end{equation*}                
                 Lösbar durch 
                 \begin{equation*}
-                    (a-\mu I)^{-1}\hat{z}^{(k+1)} = z^{(k)}
+                    (a-\mu I)\hat{z}^{(k+1)} = z^{(k)}
                 \end{equation*}
                 hat im Falle
                 \begin{equation*}
@@ -852,7 +852,7 @@
                 \end{equation*}
                 die Konvergenzeigenschaften
                 \begin{align*}
-                    R(z^{(k)}, (A - \mu I)^-1) &= \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}} = \dfrac{1}{\lambda_i - \mu} + O(q^k)\\
+                    R(z^{(k)}, (A - \mu I)^{-1}) &= \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}} = \dfrac{1}{\lambda_i - \mu} + O(q^k)\\
                     z^{(k)} &= \dfrac{|\lambda_j-\mu|^k}{(\lambda_j-\mu)^k}\dfrac{x_j}{||x_j||}+O(q^k)
                 \end{align*}
                 wobei $x_j$ den Anteil von $z^{(0)}$ in $\text{Eig}_A(\lambda_j) = \text{Eig}_{(A-\mu I)^{-1}}(1/(\lambda_j - \mu))$.
