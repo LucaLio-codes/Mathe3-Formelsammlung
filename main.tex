@@ -1515,13 +1515,13 @@
                             \dfrac{\Sigma_{i=1}^n (X_i-\mu_0)^2}{\chi^2_{n;\alpha/2}}
                         \right]
                     \end{equation*}
-                \subsubsection*{Konfidenzintervall für $\sigma^2$ bei bekanntem Erwartungswert $\mu$}
+                \subsubsection*{Konfidenzintervall für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$}
                     Hier ist $\Theta = \{(\mu, \sigma^2_0):\mu \in \mathbb{R},\sigma^2 > 0\}$ und $\tau(\theta) = \sigma^2$. Das Konfidenzintervall für $\sigma^2$ lautet
                     \begin{equation*}
                         I(X_1,\dots,X_n)=\left[
-                            \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n;1-\alpha/2}}
+                            \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;1-\alpha/2}}
                             ,
-                            \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n;\alpha/2}}
+                            \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;\alpha/2}}
                         \right]
                     \end{equation*}
                     \newpage
