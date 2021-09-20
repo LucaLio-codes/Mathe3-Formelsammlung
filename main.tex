@@ -654,7 +654,7 @@
                 \subsubsection{Herleitung}
                 \begin{satz}
                     \begin{align*}
-                        x_{k+1} &= x_k - J_{f}(x_k)F(x_k)\\
+                        x_{k+1} &= x_k - J_{f}(x_k)^{-1}F(x_k)\\
                         x_{k+1} &= x_k + s_k\\
                         s_k \text{ Lösung von } J_F(x_k)s_k &= - F(x_k)
                     \end{align*}
@@ -1250,9 +1250,11 @@
                         \hline
                         Verteilung & $E(X)$ & $Var(X)$\\
                         \hline
-                        $N(\mu, \sigma^2)$ & $\mu$ & $Var(X)$\\
-                        $Ex(\lambda)$ & $\dfrac{1}{\lambda}$ & $\dfrac{1}{\lambda^2})$\\
+                        $N(\mu, \sigma^2)$ & $\mu$ & $\sigma^2$\\
+                        $Ex(\lambda)$ & $\dfrac{1}{\lambda}$ & $\dfrac{1}{\lambda^2}$\\
                         $B(n,p)$ & $np$ & $np(1-p)$\\
+                        Geom & $\dfrac{1}{p}$& $\dfrac{1-p}{p^2}$\\
+                        Poisson & $\lambda$ & $\lambda$\\
                         \hline
                     \end{tabular}
                 \end{center}
@@ -1452,7 +1454,7 @@
             \begin{definition}
                 Für eine Messreihe $x_1, \dots, x_n$ heißt die Funktion $L(\cdot;x_1,\dots,x_n)$ mit 
                 \begin{equation*}
-                    L(\theta; x_1, \dots x_n) = f_theta(x_1)f_theta(x_2)\dots f_theta(x_n)
+                    L(\theta; x_1, \dots x_n) = f_\theta(x_1)f_\theta(x_2)\dots f_\theta(x_n)
                 \end{equation*}
                 die zu $x_1, \dots, x_n$ gehörige Likelihood-Funktion\\
 
