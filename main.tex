@@ -1258,13 +1258,13 @@
                         \hline
                     \end{tabular}
                 \end{center}
-                \textbf{Tschebyschvsche Ungleichung}\\
+                \textbf{Tschebyschevsche Ungleichung}\\
                 Es gilt
                 \begin{equation*}
                     P(|X-E(X)| \geq c) \leq \dfrac{Var(X)}{c^2}\mbox{, } c>0
                 \end{equation*}
                 \setcounter{satz}{2}
-                \begin{definition}
+                \begin{definition}(Unabhängigkeit)
                     Seien $X_1,X_2,\dots,X_n$ Zufallsvariablen mit Verteilungsfunktionen $F_1,F_2,\dots,F_n$
                     die gemeinsame Verteilungsfunktion von $X_1,X_2,\dots,X_n$ ist definiert durch 
                     \begin{equation*}
@@ -1295,7 +1295,7 @@
                 \begin{satz}
                     Ist $X_1,X_2,\dots$ eine Folge unabhängiger identisch verteilter Zufallsvariablen mit $E(X_i)=\mu$, $Var(X_i)=\sigma^2$ dann gilt
                     \begin{equation*}
-                        \lim_{n\rightarrow\infty}P\left(
+                        \lim_{n\rightarrow \infty}P\left(
                             \left|\dfrac{1}{n}\sum_{i=1}^n X_i - \mu \right| \geq \epsilon
                         \right)
                         = 0,\mbox{ } \forall \epsilon > 0
@@ -1309,8 +1309,8 @@
                     \end{align*}
                     so gilt unter schwachen zusätzlichen Voraussetzungen, z.B dass die $X_i$ identisch verteilt sind: 
                     \begin{equation*}
-                        \lim_{n\rightarrow infty} P \left(
-                            \dfrac{X_1+\dots+X_n- (\mu_1+\dots+\mu_n)}{\sqrt{\sigma_1^2+\dots+\sigma_n^2}}\leq <
+                        \lim_{n\rightarrow \infty} P \left(
+                            \dfrac{X_1+\dots+X_n- (\mu_1+\dots+\mu_n)}{\sqrt{\sigma_1^2+\dots+\sigma_n^2}}\leq y
                         \right) = \Phi(y) \mbox{ }\forall y \in \mathbb{R}
                     \end{equation*}
                     Ein Arimtetisches Mittel $\bar{X}_{(n)}$ ist für großes n also Näherungsweise $N(\mu, \sigma^2)$ verteilt, wobei
@@ -1324,18 +1324,21 @@
                 \begin{equation*}
                     F_n(z; x_1,x_2,\dots,x_n) = \dfrac{\text{Zahl der }x_i\text{ mit }x_i\leq z}{n}
                 \end{equation*}
+                \setcounter{satz}{3}
                 \begin{satz}
                     (Zentralsatz der Statistik) Sei $X_1,X_2,\dots$ eine Folge unabhängiger identisch verteilter Zufallsvariablen mit der Verteilungsfunktion F und bezeichne
                     \begin{equation*}
-                        D_n(X_1,\dots,X_n) = \sup_{z \in \mathbb{R}} | F_n (Z;X_1,\dots,X_n) - F(z)|
+                        D_n(X_1,\dots,X_n) = \sup_{z \in \mathbb{R}} | F_n (z;X_1,\dots,X_n) - F(z)|
                     \end{equation*} 
-                    die Zufällige Maximalabweichung zwischen empiririscher und "wahrer" Verteilungsfunktion, Dann gilt
+                    die Zufällige Maximalabweichung zwischen empiririscher und \begin{quote}
+                        wahrer
+                    \end{quote} Verteilungsfunktion, Dann gilt
                     \begin{equation*}
                         P (\lim_{n\rightarrow \infty} D_n(X_1,\dots,X_n) = 0) =1
                     \end{equation*}
                     $D_n(X_1,\dots,X_n)$ konvergiert also mit Wahrscheinlichkeit 1 gegen 0
                 \end{satz}
-        \subsection{Testverteilungen und Quntilapproximationen}
+        \subsection{Testverteilungen und Quantilapproximationen}
         Seien $Z_1,\dots,Z_n$ unabhängige identisch N(0,1)-Verteilte Zufallsgrößen.\\[2ex]
         $\mathbf{\chi_r^2}$\textbf{-Verteilung}:\\
         Es sei $r\in\{1,\dots,n\}$. Eine Zufallsvariable X heißt $\chi_r^2$-verteilt, falss sie die Verteilungsfunktion 
@@ -1356,7 +1359,7 @@
         Eine Zufallsvariable X heißt F-verteilt mit r und s Freiheitsgraden, falls sie die Verteilungsfunktion
         \begin{equation*}
             F(x) = P\left(
-                \dfrac{(Z_1^2+\dots+Z_r^2)/r}{(z_{r+1}^2+ \dots + z_{r+s}^2)/s} \leq x
+                \dfrac{(Z_1^2+\dots+Z_r^2)/r}{(Z_{r+1}^2+ \dots + Z_{r+s}^2)/s} \leq x
             \right)\mbox{, }x \in \mathbb{R}
         \end{equation*} besitzt\\
 
@@ -1370,13 +1373,13 @@
         \end{equation*}
         (Dont't ask me how)\\[2ex]
         \textbf{Bezeichnungen für Quantile}\\
-        Allgein $F(x_p)=p$.
+        Allgemein $F(x_p)=p$.
         \begin{center}
             \begin{tabular}{r l}
                 $u_p$ & p-Quantil der N(0,1)-Verteilung\\
                 $t_{r;p}$ & p-Quantil der $t_r$-Verteilung\\
-                $\chi^2_{r;p}$ & p-Quantil der$\chi_r^2$-Verteilung\\
-                $F_{r,s;p}$ & p-Quantil der$F_{r,s}$-Verteilung\\
+                $\chi^2_{r;p}$ & p-Quantil der $\chi_r^2$-Verteilung\\
+                $F_{r,s;p}$ & p-Quantil der $F_{r,s}$-Verteilung\\
             \end{tabular}
         \end{center}
         \subsubsection{Wichtige Anwendungsbeispiele}
