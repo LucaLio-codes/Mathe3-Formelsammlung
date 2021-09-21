@@ -1030,7 +1030,7 @@
                 Bsp: k mal würfeln\\
                 \textbf{Geordnete Probe ohne Wiederholungen}
                 \begin{equation*}
-                    n(n-1)(n-2)\dots(n-k+1)
+                    n(n-1)(n-2)\dots(n-k+1) = \dfrac{n!}{(n-k)!}
                 \end{equation*}
                 Bsp: k autos parken auf n Parkplätzen\\
                 Im Falle $k=n$ \textbf{Permutation der Menge $\Omega$}
@@ -1038,10 +1038,15 @@
                     n!
                 \end{equation*}
                 \textbf{Ungeordnete Probe ohne Wiederholungen}
-                \begin{equation}
+                \begin{equation*}
                     \binom{n}{k} = \dfrac{n!}{k!(n-k)!}
-                \end{equation}
-                Bsp: Lotto
+                \end{equation*}
+                Bsp: Lotto\\
+                \textbf{$k_1$ aus $N_1$,$k_2$ aus $N_2$ in k aus N}
+                \begin{equation*}
+                    \dfrac{\binom{N_1}{k_1}\binom{N_2}{k_2}}{\binom{N}{k}}
+                \end{equation*}
+                mit $N = N_1 + N_2$ und $k = k_1+ k_2$
         \subsection{Bedingte Wahrscheinlichkeit, Unabhängigkeiten}
             \subsubsection{Bedingte Wahrscheinlichkeit}
                 \textbf{Bedingte Wahrscheinlichkeit von A unter der Bedingung B}
