@@ -92,13 +92,13 @@
             \textbf{Trick effiziente/ übersichtliche Berechnung}\\
             \begin{center}
                 \begin{tabular}{c || c | c | c | c | c |}
-                    k/j & $x_1$ & $x_2$ & \dots & $x_n$ & $L_{k,n}$\\
+                    k/j & $x_0$ & $x_1$ & \dots & $x_n$ & $L_{k,n}$\\
                     \hline
                     \hline
-                    $x_1$ & $\backslash$ & $\dfrac{x-x_2}{x_1-x_2}$ & \dots & $\dfrac{x-x_n}{x_1-x_n}$ & $\prod\text{diese Zeile}$\\
-                    $x_2$ & $\dfrac{x-x_1}{x_2-x_1}$ & $\backslash$ & \dots & $\dfrac{x-x_n}{x_2-x_n}$ & $\prod\text{diese Zeile}$\\
+                    $x_0$ & $\backslash$ & $\dfrac{x-x_1}{x_0-x_1}$ & \dots & $\dfrac{x-x_n}{x_0-x_n}$ & $\prod\text{diese Zeile}$\\
+                    $x_1$ & $\dfrac{x-x_0}{x_1-x_1}$ & $\backslash$ & \dots & $\dfrac{x-x_n}{x_1-x_n}$ & $\prod\text{diese Zeile}$\\
                     $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$\\ 
-                    $x_n$ & $\dfrac{x-x_1}{x_n-x_1}$ & $\dfrac{x-x_2}{x_n-x_1}$ & \dots & $\backslash$ & $\prod\text{diese Zeile}$
+                    $x_n$ & $\dfrac{x-x_0}{x_n-x_0}$ & $\dfrac{x-x_1}{x_n-x_0}$ & \dots & $\backslash$ & $\prod\text{diese Zeile}$
                 \end{tabular}
             \end{center}
         \begin{satz}
@@ -354,7 +354,7 @@
                 k_1 &:= f(t_j, u_j)\\
                 k_2 &:= f(t_j + \frac{h}{2}, u_j + \frac{h}{2}k_1)\\
                 k_3 &:= f(t_j + \frac{h}{2}, u_j + \frac{h}{2}k_2)\\
-                k_3 &:= f(t_{j+1}, u_j + hk_3)\\
+                k_4 &:= f(t_{j+1}, u_j + hk_3)\\
             \end{align*}
             \textbf{r-stufiges explizites Runge-Kutta-Verfahren}
             \begin{align*}
@@ -1176,7 +1176,7 @@
                         f(t)=
                         \begin{cases}
                             0, & t < 0\\
-                            \lambda e^{-\lambda } & t \geq 0
+                            \lambda e^{-\lambda t} & t \geq 0
                         \end{cases}
                     \end{equation*}
                     heißt exponentialverteilt mit Parameter $\lambda$, kurz $Ex(\lambda)$.
