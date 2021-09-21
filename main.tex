@@ -165,7 +165,7 @@
                     \varphi_i(x) =
                     \begin{cases}
                         0 & \mbox{falls} x \leq x_{i-1}\\
-                        \dfrac{x - x_{i+1}}{x_{i+1} - x_i}& \mbox{falls} x \in [x_{i-1}, x_i]\\
+                        \dfrac{x - x_{i-1}}{x_{i} - x_{i-1}}& \mbox{falls} x \in [x_{i-1}, x_i]\\
                         \dfrac{x_{i+1} - x}{x_{i+1} - x_i}& \mbox{falls} x \in [x_{i}, x_{i+1}]\\
                         0 & \mbox{falls} x > x_{i+1}
                     \end{cases} \\
@@ -449,7 +449,7 @@
             \begin{align*}
                 u_{j+1} &= \dfrac{1}{1-\lambda h} u_j\\
                 R(q) &= \frac{1}{1-q}; q \not = 1\\
-                S&=\{q \in \mathbb{C} : |1+q| \leq 1\} \supset \{q \in \mathbb{C}: Re(q) <0 \}
+                S&=\{q \in \mathbb{C} : |1+q| \geq 1\} \supset \{q \in \mathbb{C}: Re(q) <0 \}
             \end{align*}
             A und L Stabil\\[1ex]
             \textbf{Implizite Trapezregel}
