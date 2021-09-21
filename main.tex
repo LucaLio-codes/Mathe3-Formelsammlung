@@ -96,7 +96,7 @@
                     \hline
                     \hline
                     $x_1$ & $\backslash$ & $\dfrac{x-x_2}{x_1-x_2}$ & \dots & $\dfrac{x-x_n}{x_1-x_n}$ & $\prod\text{diese Zeile}$\\
-                    $x_2$ & $\dfrac{x-x_1}{x_2-x_1}$ & $\backslash$ & \dots & $\dfrac{x-x_m}{x_2-x_n}$ & $\prod\text{diese Zeile}$\\
+                    $x_2$ & $\dfrac{x-x_1}{x_2-x_1}$ & $\backslash$ & \dots & $\dfrac{x-x_n}{x_2-x_n}$ & $\prod\text{diese Zeile}$\\
                     $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$\\ 
                     $x_n$ & $\dfrac{x-x_1}{x_n-x_1}$ & $\dfrac{x-x_2}{x_n-x_1}$ & \dots & $\backslash$ & $\prod\text{diese Zeile}$
                 \end{tabular}
@@ -111,7 +111,7 @@
             \end{array}
         \end{equation*}
         \begin{equation*}
-            f_{[x_j,\dots,x_k]} = \dfrac{f_{[x_{j+1} \dots, x_{j+k}]} - f_{[x_{j} \dots, x_{j+k-1}]}}{x_{j+k} - x_j} = \dfrac{f_{\text{unten}} - f_{\text{oben}}}{x_{\text{unten}} - x_{\text{oben}}}
+            f_{[x_j,\dots,x_{k+j}]} = \dfrac{f_{[x_{j+1} \dots, x_{j+k}]} - f_{[x_{j} \dots, x_{j+k-1}]}}{x_{j+k} - x_j} = \dfrac{f_{\text{unten}} - f_{\text{oben}}}{x_{\text{unten}} - x_{\text{oben}}}
         \end{equation*}
        \begin{figure}[ht]
            \includegraphics[scale=0.3]{images/grafik.png}
@@ -131,13 +131,13 @@
             \begin{equation*}
                 \max_{x \in [a,b]} |f(x) - p_n(x)| \leq \max_{x \in [a,b]} \dfrac{|f^{(n+1)}(x)|}{(n+1)!}(b-a)^{n+1}
             \end{equation*}
-            \textbf{Tschebyschev-Abzissen}:
+            \textbf{Tschebyschev-Abszissen}:
             \begin{equation*}
                 \max_{x \in [a,b]} |f(x) - p_n(x)| \leq \max_{x \in [a,b]} \dfrac{|f^{(n+1)}(x)|}{(n+1)!}\left(\dfrac{b-a}{2}\right)^{n+1}2^{-n}
             \end{equation*}
        \end{korolar}
        \textbf{Inverse Interpolation}:\\
-       Sei $f:[a,b] \rightarrow \mathbb{R}$.
+       Sei $f:[a,b] \rightarrow \mathbb{R}$ bijektiv.
        Sind dann alle $(x_i,y_i), y_i = f(x_i)$ Stützpunkte von $f$
        dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kan durch Interpolation dieser
        gewonnen werden
@@ -158,9 +158,9 @@
             \end{definition}
             \subsubsection{Linear}
                 \begin{equation*}
-                    s(x) = x_i(x) = \dfrac{x_{i+1} - x}{x_{i+1} - x_i} y_i + \dfrac{x - x_{i+1}}{x_{i+1} - x_i} y_{i+1} \mbox{ }\forall x \in [x_i, x_{i+1}]
+                    s(x) = s_i(x) = \dfrac{x_{i+1} - x}{x_{i+1} - x_i} y_i + \dfrac{x - x_{i}}{x_{i+1} - x_i} y_{i+1} \mbox{ }\forall x \in [x_i, x_{i+1}]
                 \end{equation*}
-                mit hilfsknoten $x_{-1} < a $ und $ x_{n+1} > b$ gilt dann
+                mit Hilfsknoten $x_{-1} < a $ und $ x_{n+1} > b$ gilt dann
                 \begin{align*}
                     \varphi_i(x) =
                     \begin{cases}
@@ -172,7 +172,7 @@
                     s(x) = \sum_{i=0}^n y_i \varphi_i(x), x \in [a,b]
                 \end{align*}
                 \begin{satz}
-                    Zu Einer Zerlegung $\Delta = \{x_i:a = x_0 < x_1 < \dots < x_n = b\}$ von $[a,b]$ und Werten $y_i$ existiert genau ein interpolierender Spline
+                    Zu einer Zerlegung $\Delta = \{x_i:a = x_0 < x_1 < \dots < x_n = b\}$ von $[a,b]$ und Werten $y_i$ existiert genau ein interpolierender Spline
                 \end{satz}
                 \begin{satz}
                     \begin{equation*}
@@ -183,7 +183,7 @@
             \begin{equation*}
                 s_i(x) = \dfrac{1}{6} \left(
                     \dfrac{(x_{i+1} - x)^3}{x_{i+1} - x_i}M_i +
-                    \dfrac{(x - x_{i+1})^3}{x_{i+1} - x_i}M_{i+1}
+                    \dfrac{(x - x_{i})^3}{x_{i+1} - x_i}M_{i+1}
                 \right)
                 + c_i (x-x_i) + d_i
             \end{equation*}
@@ -235,13 +235,13 @@
             \begin{satz}{Fehler Natürlich}
                 \begin{align*}
                     |f(x) - s(x)| \leq \dfrac{h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
-                    |f(x)^{(k)} - s(x)^{(k)}| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
+                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
                 \end{align*}
             \end{satz}
             \begin{satz}{Fehler Hermit}
                 \begin{align*}
                     |f(x) - s(x)| \leq \dfrac{5}{384} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
-                    |f(x)^{(k)} - s(x)^{(k)}| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
+                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
                 \end{align*}
             \end{satz}
             \newpage
@@ -275,8 +275,8 @@
         \subsubsection{offen}
         \textbf{Berechnung}
         \begin{align*}
-            x_i &= a+ih &  i&=0,\dots,n+1, &  h&=\frac{b-a}{n+2} \\
-            & & \tilde{I}_n(f) &= h \sum^{n+1}_{i=0} \tilde{\alpha}_{i,n} f(x_i)
+            x_i &= a+ih &  i&=1,\dots,n+1, &  h&=\frac{b-a}{n+2} \\
+            & & \tilde{I}_n(f) &= h \sum^{n+1}_{i=1} \tilde{\alpha}_{i,n} f(x_i)
         \end{align*}
         \begin{equation*}
             \begin{array}{c c c c c c c}
@@ -307,7 +307,7 @@
     \textbf{Summierte Simpson-Regel}\\
     (geschlossen, $n = 2$, $h=\frac{b-a}{2m}$)
     \begin{equation*}
-        S^{(2)}_N(f)=\dfrac{h}{3}\sum^{m-1}_{j=0}(f(x_{2j}) + 4f(x_{2j+1} + f(x_{2j+2})))
+        S^{(2)}_N(f)=\dfrac{h}{3}\sum^{m-1}_{j=0}(f(x_{2j}) + 4f(x_{2j+1}) + f(x_{2j+2}))
     \end{equation*}
     Fehler: $R^{(2)}_N(f)=-\frac{f^{(4)}(\xi)}{180}(b-a)h^4$\\[2ex]
 
@@ -340,12 +340,12 @@
             \end{align*}
             kann man auch schreiben als:
             \begin{align*}
-                u_{j+1} &:= u_j + h (k_1 + k_2) 
+                u_{j+1} &:= u_j + \dfrac{h}{2} (k_1 + k_2) 
             \end{align*}
             mit $k_1 = f(t_j, u_j),$  $k_2 = f(t_{j+1} + u_j + hk_1) $\\
             \textbf{Modifizierter Euler, zweites Runge-Kutta-Verfahren 2. Ordnung}
             \begin{align*}
-                u_{j+1} &= u_j + hK_2
+                u_{j+1} &= u_j + hk_2
             \end{align*}
             mit $k_1 = f(t_j, u_j)$, $k_2 = f(t_j + \frac{h}{2}, u_j + \frac{h}{2}k_1)$\\
             \textbf{Klassisches Runge-Kutta-Verfahren  4.Ordnung (RK4)}
@@ -358,9 +358,9 @@
             \end{align*}
             \textbf{r-stufiges explizites Runge-Kutta-Verfahren}
             \begin{align*}
-                K_i (t,u,h) &= k_i := f(t+\gamma_i h, u+h \sum_{j=1}^{i-1}\alpha_{ij}k_j), i = 1 \dots r\\
+                k_i (t,u,h) &= k_i := f(t+\gamma_i h, u+h \sum_{j=1}^{i-1}\alpha_{ij}k_j), i = 1 \dots r\\
                 \phi(t,h;u) &= \sum_{i=1}^r \beta_i k_i \\
-                \mathbf{Butscher-Schema} & \\
+                \mathbf{Butcher-Schema} & \\
                 &
                 \begin{array} {c | c c c c c}
                     \gamma_1 &  0\\
@@ -369,7 +369,7 @@
                     \vdots   &  \vdots & \vdots & \ddots &\ddots\\
                     \gamma_r &  \alpha_{r1} & \dots & \dots & \alpha_{r,r-1} & 0\\
                     \hline\\[-\normalbaselineskip]
-                    & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta{r}
+                    & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta_{r}
                 \end{array}
             \end{align*}
             \newpage
@@ -391,7 +391,7 @@
                 p = 4 falls zusätzlich
                 \begin{align*}
                     \sum_{i=1}^r \beta_i \gamma_i^3 &= \frac{1}{4}, & \sum_{i,j=1}^r \beta_i \gamma_i \alpha_{ij} \gamma_j &= \frac{1}{8}\\
-                    \sum_{i,j=1}^r \beta_i \alpha_{ij} \gamma_j^2 &= \frac{1}{3} & \sum_{i,j=1}^r \beta_i \alpha_{ij} \alpha{jk} \gamma_h &= \frac{1}{24}
+                    \sum_{i,j=1}^r \beta_i \alpha_{ij} \gamma_j^2 &= \frac{1}{12} & \sum_{i,j,k=1}^r \beta_i \alpha_{ij} \alpha_{jk} \gamma_k &= \frac{1}{24}
                 \end{align*}
             \end{satz}
         \subsection{Steife Differentialgleichungen}
@@ -402,8 +402,8 @@
                 y'(t) &= Ay(t)+c\\
                 y(a) &= y_0
             \end{align*}
-            heißt steif, wenn die Realteile der Eigenwerte von A nichtpositiv sind und A eigenwerte mit $Re(\lambda) \ll -1$
-            und eigenwerte $\lambda_i$ mit schwach negativen Realteil besitzt. 
+            heißt steif, wenn die Realteile der Eigenwerte von A nichtpositiv sind und A Eigenwerte mit $Re(\lambda) \ll -1$
+            und Eigenwerte $\lambda_i$ mit schwach negativen Realteil besitzt. 
         \end{definition}
         \begin{definition}
             Ein Verfahren heißt A-Stabil wenn seine Anwendung auf das Modellproblem
@@ -432,9 +432,9 @@
             heißt Stabilitätsgebiet des Einschrittverfahrens
         \end{definition}
         \begin{definition}
-            Ein Verfahen heißt L-Stabil, wenn es A-Stabil ist und die Statbilitätsfunktion zudem erfüllt
+            Ein Verfahren heißt L-Stabil, wenn es A-Stabil ist und die Statbilitätsfunktion zudem erfüllt
             \begin{equation*}
-                \stackrel{\lim}{q \rightarrow - \infty} R(q) = 0
+                \lim_{q \rightarrow - \infty} R(q) = 0
             \end{equation*}
         \end{definition}
         \subsubsection{Stabilitätsgebiete Einiger Verfahren}
@@ -442,7 +442,7 @@
             \begin{align*}
                 u_{j+1} &= (1+ \lambda h )u_j\\
                 R(q) &= 1+q\\
-                S&=\{q \in \mathbb{C} : |1+q| \leq 1\}
+                S&=\{q \in \mathbb{C} : |1+q| \geq 1\}
             \end{align*}
             Nicht A-Stabil (gilt für alle Expliziter RKs)\\[1ex]
             \textbf{Impliziter Euler}
@@ -471,7 +471,7 @@
                     \vdots   &  \vdots & \vdots & \vdots &\vdots & \vdots\\
                     \gamma_r &  \alpha_{r1} & \dots & \dots & \alpha_{r,r-1} & \alpha_{r,r}\\
                     \hline\\[-\normalbaselineskip]
-                    & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta{r}
+                    & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta_{r}
                 \end{array}\\
                 u_j+1 &= (1+ q\beta^T (I - qA)^{-1}\mathbf{1})u_j\\
                 R(q) &= 1 + q\beta^T(I-qA)^{-1}\mathbf{1}= \dfrac{\det(I-qA+q\mathbf{1}\beta^T)}{\det(I-qA)}
@@ -500,7 +500,7 @@
                 x &= 
                 \begin{pmatrix}
                     x_1\\
-                    x_2\\<
+                    x_2\\
                     \vdots\\
                     x_n
                 \end{pmatrix}
@@ -516,7 +516,7 @@
                 Subsection Damit Nummerierung stimmt
             \subsubsection{Gaußsches Eliminationsverfahren}
                 \begin{enumerate}
-                    \item Wähle ein Pivotelement $a^(k)_{rk} \not= 0, k\leq r\leq n$ vertausche Zeile $k$ und $r$ $\rightsquigarrow (\tilde{A}^{(k)}, \tilde{b}^{(k)}) $
+                    \item Wähle ein Pivotelement $a^{(k)}_{rk} \not= 0, k\leq r\leq n$ vertausche Zeile $k$ und $r$ $\rightsquigarrow (\tilde{A}^{(k)}, \tilde{b}^{(k)}) $
                     \item Für $i=k+1, \dots, n$: 
                     Subtrahiere das $l_{ik}$-fache mit
                     \begin{equation*}
@@ -1563,7 +1563,7 @@
                      \end{enumerate}
                 \subsubsection*{t-Test}
                      \begin{enumerate}
-                         \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2_0)$-verteilt $\sigma^2$ unbekannt
+                         \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\sigma^2$ unbekannt
                          \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$     
                          \item Testgröße
                          \begin{equation*}
@@ -1574,11 +1574,11 @@
                      \end{enumerate}
                 \subsubsection*{$\chi^2$-Streuungstest}
                     \begin{enumerate}
-                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2_0)$-verteilt $\mu2$ unbekannt
+                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\mu2$ unbekannt
                         \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
                         \item Testgröße
                         \begin{equation*}
-                            T(X_1,\dots,X_n)=\dfrac{(n-1)}{\sigma^2_0}S^3_{(n)}
+                            T(X_1,\dots,X_n)=\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}
                         \end{equation*}
                         \item Ablehnung falls\\
                         a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$, 
