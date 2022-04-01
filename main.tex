@@ -249,7 +249,7 @@
     \subsection{Newton-Cotes-Quadratur}
         \subsubsection{geschlossen}
             \begin{definition}
-                Eine Integrationsformel $J(f) = \Sigma_{i=0}^n \beta_i f(x_i)$ heißt exact vom Grad $n$
+                Eine Integrationsformel $J(f) = \Sigma_{i=0}^n \beta_i f(x_i)$ heißt exakt vom Grad $n$
                 falls sie alle Polynome bis mindestens vom Grad $n$ exakt integriert 
             \end{definition}
             \textbf{Allgemeiner Fehler}
@@ -425,7 +425,7 @@
         \end{definition}
         \setcounter{satz}{4}
         \begin{definition}
-            Mann nennt R die Stabilitätsfunktion des Einschrittverfahrens. Die Menge
+            Man nennt R die Stabilitätsfunktion des Einschrittverfahrens. Die Menge
             \begin{equation*}
                 S = \{q \in \mathbb{C} : |R(q)| \leq 1\}
             \end{equation*}
@@ -557,7 +557,7 @@
                 \begin{equation*}
                     x^TAx>0 \forall x \in \mathbb{R} \backslash \{0\}
                 \end{equation*}
-                \item A ist strikt diagonaldominatn, d.h,
+                \item A ist strikt diagonaldominant, d.h,
                 \begin{equation*}
                     |a_{ij} > \sum_{j=1\not=i}^n|a_{ij}|, i= 1,\dots,n
                 \end{equation*}
@@ -585,7 +585,7 @@
         \begin{equation*}
             LL^T = A \mbox{ } \text{(Cholesky-Zerlegung)}
         \end{equation*}
-        Ferner besist A eine eindeutige Dreickszerlegung
+        Ferner besitzt A eine eindeutige Dreickszerlegung
         \begin{equation*}
             \tilde{L}\tilde{R}= A,
         \end{equation*}
@@ -666,7 +666,7 @@
                     \begin{enumerate}
                         \item Falls $F(x^{(k)}) = 0$ STOPP mit Ergebnis $x^{(k)}$
                         \item Berechne $s^{(k)}$
-                        \item $x_{k+1} = x^{(k)} + s^{(k)}$
+                        \item $x^{k+1} = x^{(k)} + s^{(k)}$
                     \end{enumerate}
                 \end{satz}
             \subsubsection{Superlineare und quadratische lokale Konvergenz des Newton-Verfahrens}
@@ -876,6 +876,7 @@
                 \end{align*}
             \end{itemize}
         \end{definition}
+        \newpage
     \section{Grundbegriffe der Statistik und Wahrscheinlichkeitstheorie}
         \subsection{Messreihen}
             \begin{itemize}
@@ -883,7 +884,7 @@
                 \item quantitativ stetig:  Die Mermale sind reele Zahlen
             \end{itemize}
             \begin{definition}
-                zu $x_1,x_2,\dots,x_n$ ist $x_{(1)},x_{(2)},\dots,x_{(n)}$ die Geordnete Messreihe mit $x_{(1)} \leq x_{(2)}\leq \dots \leq x_{(n)}$\\
+                zu $x_1,x_2,\dots,x_n$ ist $x_{(1)},x_{(2)},\dots,x_{(n)}$ die geordnete Messreihe mit $x_{(1)} \leq x_{(2)}\leq \dots \leq x_{(n)}$\\
                 Die Empirische Verteilungsfunktion hierzu ist
                 \begin{equation*}
                     F(z;x_1,x_2,\dots,x_n)= F(z)=\dfrac{\text{Zahl der} x_i \text{ mit } x_i \leq z}{n} 
@@ -898,7 +899,7 @@
                 F(a_1),F(a_2)-F(a_1), \dots, F(a_{r-1})-F(a_{r-2}), 1 - F(a_{r-1})
             \end{equation*}
             Für Histogram wähle $a_0 < \min (a_1, x_{(1)})$, $a_r > \max{a_{r-1}, x_{(n)}}$.
-            Für jede Klassenhäufigkeit: Teile Durch klassenbreite Un zeichne in Diagramm\newpage
+            Für jede Klassenhäufigkeit: Teile durch Klassenbreite und zeichne in Diagramm
         \subsection{Lage- und Streumaßzahlen}
             \subsubsection{Lagemaßzahlen}
                 \textbf{Arithmetisches Mittel:}
@@ -961,7 +962,7 @@
                 \end{equation*}
                 \textbf{Empirischer Korrelationskoeffizient}
                 \begin{equation*}
-                    r_{xy} = \dfrac{s_xy}{s_x s_y}
+                    r_{xy} = \dfrac{s_{xy}}{s_x s_y}
                 \end{equation*}
             \subsubsection{Regressionsgerade}
                 \begin{align*}
@@ -1004,7 +1005,7 @@
             \subsubsection{Wahrscheinlichkeit}
                 \setcounter{satz}{3}
                 \begin{definition}
-                    Ein System $\mathscr{A} \subseteq \mathscr{P}(\Omega)$ von Ereignissen heißt $\sigma$-Alebra (oder Ereignissystem) wenn gilt:
+                    Ein System $\mathscr{A} \subseteq \mathscr{P}(\Omega)$ von Ereignissen heißt $\sigma$-Algebra (oder Ereignissystem) wenn gilt:
                     \begin{enumerate}[label=\alph*)]
                         \item $\Omega \in \mathscr{A}$
                         \item Falls $A \in \mathscr{A}$, dann auch $A^c \in \mathscr{A}$
@@ -1026,7 +1027,7 @@
                     P(A)= \dfrac{\text{Elementzahl von A}}{n} = \frac{\#A}{\#\Omega}
                 \end{equation*}
             \subsubsection{Elementare Formeln der Kombinatorik}
-                \textbf{Geodnete Probe mit Wiederholungen}\\
+                \textbf{Geordnete Probe mit Wiederholungen}\\
                 \begin{equation*}
                     n^k
                 \end{equation*}
@@ -1045,7 +1046,7 @@
                     \binom{n}{k} = \dfrac{n!}{k!(n-k)!}
                 \end{equation*}
                 Bsp: Lotto\\
-                \textbf{$k_1$ aus $N_1$,$k_2$ aus $N_2$ in k aus N}
+                \textbf{$k_1$ aus $N_1$,$k_2$ aus $N_2$ in $k$ aus $N$}
                 \begin{equation*}
                     \dfrac{\binom{N_1}{k_1}\binom{N_2}{k_2}}{\binom{N}{k}}
                 \end{equation*}
@@ -1322,7 +1323,7 @@
                             \dfrac{X_1+\dots+X_n- (\mu_1+\dots+\mu_n)}{\sqrt{\sigma_1^2+\dots+\sigma_n^2}}\leq y
                         \right) = \Phi(y) \mbox{ }\forall y \in \mathbb{R}
                     \end{equation*}
-                    Ein Arimtetisches Mittel $\bar{X}_{(n)}$ ist für großes n also Näherungsweise $N(\mu, \sigma^2)$ verteilt, wobei
+                    Ein Arithmetisches Mittel $\bar{X}_{(n)}$ ist für großes n also Näherungsweise $N(\mu, \sigma^2)$ verteilt, wobei
                     \begin{align*}
                         \mu &= \dfrac{1}{n}E(X_1+\dots+X_n) = \dfrac{1}{n}(\mu_1+...+\mu_n) & \sigma^2 &= \dfrac{1}{n^2} Var(X_1+\dots+X_n)= \dfrac{1}{n^2}(\sigma_1^2+\dots+\sigma_n^2) 
                     \end{align*}
