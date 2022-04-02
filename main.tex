@@ -290,7 +290,7 @@
         \end{equation*}\newpage
     \subsection{Summierte Newton-Cotes}
     Newton Cotes nur auf kleinen Intervallen präzise in kleinen Intervalen\\
-    Idee: Aufteilen in Teilintervalle
+    Idee: Aufteilen in Teilintervalle $m$
     \begin{align*}
         N &= n \cdot m & H&= \dfrac{b-a}{m} & h&= \dfrac{b-a}{N}\\
         x_i &=  a + ih & i&= 0,\dots, N
@@ -656,7 +656,7 @@
                 \subsubsection{Herleitung}
                 \begin{satz}
                     \begin{align*}
-                        x^{(k+1)} &= x^{(k)} - J_{f}(x^{(k)})^{-1}F(x^{(k)})\\
+                        x^{(k+1)} &= x^{(k)} - J_{F}(x^{(k)})^{-1}F(x^{(k)})\\
                         x^{(k+1)} &= x^{(k)} + s^{(k)}\\
                         s^{(k)} \text{ Lösung von } J_F(x^{(k)})s^{(k)} &= - F(x^{(k)})
                     \end{align*}
@@ -785,10 +785,9 @@
                     \begin{enumerate}[label=\alph*)]
                         \item \begin{align*}
                             \sigma(A) &\subset \bigcup_{i=1}^n K_i\\
-                            K_i &= \left\{\mu \in \mathbb{C}_ |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{(zeilensumme ohne diag)}\right\}
+                            K_i &= \left\{\mu \in \mathbb{C} : |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{ (Zeilensumme ohne Diagonale)}\right\}
                         \end{align*}
-                        \item ist die Vereinigung $G_1$ von k Greshgorin-kreisen disjunkt von der Vereinigung $G_2$ der restlichen
-                        n-k Kreise, dann enthält $G_1$ genau k EWs udn $G_2$ genau n-k EWs von A
+                        \item ist die Vereinigung $G_1$ von k Gershgorin-Kreisen disjunkt von der Vereinigung $G_2$ der restlichen n-k Gershgorin-Kreise, dann enthält $G_1$ genau k EWs und $G_2$ genau n-k EWs von A
                     \end{enumerate}
                 \end{satz}
                 \begin{satz}
@@ -1085,14 +1084,13 @@
             \begin{definition}
                 Eine Zufallsvariable ist eine Abbildung
                 \begin{equation*}
-                    x: \Omega \rightarrow \mathbb{R}
+                    X: \Omega \rightarrow \mathbb{R}
                 \end{equation*}
                 mit der Eigenschaft, dass für jedes Intervall $I \subseteq \mathbb{R}$ die Urbildmenge
                 \begin{equation*}
                     A = \{\omega \in \Omega: X(\omega) \in I\}
                 \end{equation*}
-                zum Ereignissystem $\mathscr{A}$ gehört. Die Wahrscheinlichkeit dieses Ereignisses "X nimmt Werte im Interval I an"
-                bezeichnet man abkürzend mit $P(X\in I)$ und schreibt
+                zum Ereignissystem $\mathscr{A}$ gehört. Die Wahrscheinlichkeit dieses Ereignisses "X nimmt Werte im Interval I an" bezeichnet man abkürzend mit $P(X\in I)$ und schreibt
                 \begin{align*}
                     P(A \leq X \leq B), & P(X \leq x), & P(|X-a|<b), &P(X=b), & usw
                 \end{align*}
@@ -1194,7 +1192,7 @@
                     \end{equation*}
                     $E(X) = \dfrac{1}{\lambda}$
                 \subsubsection*{Normalverteilung}
-                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Varianz). Eine Stetig verteilte Zufallsvariable mit der Dichte
+                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
                     \begin{equation*}
                         f(t)= \dfrac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{t- \mu}{\sigma})^2}\mbox{, }t \in \mathbb{R}
                     \end{equation*}
@@ -1213,7 +1211,7 @@
                         F_{\mu, \sigma^2}(x) = \Phi(\dfrac{x-\mu}{\sigma})
                     \end{equation*}
         \subsection{Erwartungswert und Varianz}
-            Ist X eine Diskret verteilte Zufallsvariable mit werten $x_1, x_2, \dots$ so heißt
+            Ist X eine Diskret verteilte Zufallsvariable mit Werten $x_1, x_2, \dots$ so heißt
             \begin{equation*}
                 E(X) = \sum_i x_i P(X=x_i)
             \end{equation*}
@@ -1228,7 +1226,7 @@
             \begin{equation*}
                 E(h(X)) = E(X) = \sum_i h(x_i) P(X=x_i)
             \end{equation*}
-            Ist X stetig verteilt mit Dichte $f$m dann hat $h(X)$ den Erwartungswert
+            Ist X stetig verteilt mit Dichte $f$, dann hat $h(X)$ den Erwartungswert
             \begin{equation*}
                 E(h(X)) = \int_{-\infty}^\infty h(x) f(x) dx 
             \end{equation*}
@@ -1299,7 +1297,6 @@
                         Var(X_1+\dots+X_n) = Var(X_1) + \dots + Var(X_n)
                     \end{equation*}
                 \end{satz}
-                \newpage
         \subsection{Gesetz der großen Zahlen, zentraler Grenzwertsatz}
             \subsubsection{Das schwache gesetz der großen Zahlen}
                 \begin{satz}
@@ -1363,7 +1360,7 @@
                 \dfrac{Z_{r+1}}{\sqrt{(Z_1^2+\dots+Z_r^2)/r}} \leq x
             \right) \mbox{, } x \in \mathbb{R}
         \end{equation*}
-        besitzt\newpage
+        besitzt
         $\mathbf{F_{r,s}}$\textbf{-Verteilung}\\
         Es sei $r,s \in \{1,\dots,n-1\}$ mit $r+s\leq n$. 
         Eine Zufallsvariable X heißt F-verteilt mit r und s Freiheitsgraden, falls sie die Verteilungsfunktion
@@ -1467,7 +1464,7 @@
         \subsection{Maximum-Likelihood-Schätzer}
             Bei gegebener Verteilungsklasse $F_\theta, \theta \in \Theta$,
             lassen sich Schätzer für den Parameter $\theta$ oft mit der Maximum-Likelihood-Methode gewinnen.
-            Sind die zugrundeliegenden Zufallsvariablen $X_1,\dots , X_n$ stetig mit einer Dichte verteilt, so
+            Sind die zugrundeliegenden Zufallsvariablen $X_1,\dots , X_n$ stetig mit einer \textbf{Dichte} verteilt, so
             hängt diese ebenfalls von den Parametern ab:
             \begin{equation*}
                 f_\theta(x), x \in \mathbb{R}.
@@ -1496,7 +1493,7 @@
                 \begin{equation*}
                     T_n:\mathbb{X}^n\rightarrow \Theta \mbox{, }T_n(x_1,\dots,x_n) = \hat{\theta}(x_1, \dots, x_n)
                 \end{equation*}
-                Maximum-Likelihood-Schätzern
+                Maximum-Likelihood-Schätzer.
             \end{definition}
         \subsection{Konfidenzintervalle}
             \begin{definition}
