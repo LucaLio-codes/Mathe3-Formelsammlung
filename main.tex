@@ -102,7 +102,7 @@
                 \end{tabular}
             \end{center}
         \begin{satz}
-                es gibt genau ein Polynom $p(x)$ vom Grad $\leq n$, das die interpolationsbedingungen erfüllt, nämlich $p_n(x)$
+                es gibt genau ein Polynom $p(x)$ vom Grad $\leq n$, das die Interpolationsbedingungen erfüllt, nämlich $p_n(x)$
         \end{satz}
        \subsubsection{Newton}
         \begin{equation*}
@@ -117,7 +117,7 @@
            \includegraphics[scale=0.3]{images/grafik.png}
            \centering
        \end{figure}
-       Die Oberste Zeile ab dem Strich sind dan die $\gamma_i$
+       Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
        
        \subsubsection{Fehlerabschätzung}
        \setcounter{satz}{2}
@@ -139,7 +139,7 @@
        \textbf{Inverse Interpolation}:\\
        Sei $f:[a,b] \rightarrow \mathbb{R}$ bijektiv.
        Sind dann alle $(x_i,y_i), y_i = f(x_i)$ Stützpunkte von $f$
-       dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kan durch Interpolation dieser
+       dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kann durch Interpolation dieser
        gewonnen werden
        \newpage
        \subsection{Spline-Interpolation}
@@ -204,7 +204,7 @@
             \begin{equation*}
                 \begin{matrix}
                     b_0 = \dfrac{y_1-y_0}{h_0} - f'(a) & b_n = f'(b) - \dfrac{y_n - y_{n-1}}{h_{n-1}} & & \\
-                    \lambda_0 =\dfrac{h_6}{3} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\ 
+                    \lambda_0 =\dfrac{h_0}{3} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\ 
                 \end{matrix}
             \end{equation*}
             \begin{equation*}
@@ -249,12 +249,12 @@
     \subsection{Newton-Cotes-Quadratur}
         \subsubsection{geschlossen}
             \begin{definition}
-                Eine Integrationsformel $J(f) = \Sigma_{i=0}^n \beta_i f(x_i)$ heißt exact vom Grad $n$
+                Eine Integrationsformel $J(f) = \Sigma_{i=0}^n \beta_i f(x_i)$ heißt exakt vom Grad $n$
                 falls sie alle Polynome bis mindestens vom Grad $n$ exakt integriert 
             \end{definition}
             \textbf{Allgemeiner Fehler}
             \begin{equation*}
-                \int_a^b \left\| f(x)  - p_n(x) \right\| dx \leq \dfrac{\left\| f^{(n+1)(\xi)}\right\|}{(n+1)!}(b-a)^{n+2}
+                \int_a^b \left\| f(x)  - p_n(x) \right\| dx \leq \dfrac{\left\| f^{(n+1)}(\xi)\right\|}{(n+1)!}(b-a)^{n+2}
             \end{equation*}
             \textbf{Berechnung}
             \begin{align*}
@@ -290,7 +290,7 @@
         \end{equation*}\newpage
     \subsection{Summierte Newton-Cotes}
     Newton Cotes nur auf kleinen Intervallen präzise in kleinen Intervalen\\
-    Idee: Aufteilen in Teilintervalle
+    Idee: Aufteilen in Teilintervalle $m$
     \begin{align*}
         N &= n \cdot m & H&= \dfrac{b-a}{m} & h&= \dfrac{b-a}{N}\\
         x_i &=  a + ih & i&= 0,\dots, N
@@ -321,28 +321,28 @@
 
 \section{Numerische Behandlung von Anfangswertproblemen gewöhnlicher Differentialgleichungen}
     \subsection{Einführung}
-        \subsubsection{Verfahen}
+        \subsubsection{Verfahren}
             \textbf{Expliziter Euler}
             \begin{align*}
                 u_{j+1} &:= u_j + hf(t_j,u_j)
             \end{align*}
-            \textbf{Imliziter Euler}
+            \textbf{Impliziter Euler}
             \begin{align*}
                 u_{j+1} &:= u_j + hf(t_{j+1}, u_{j+1})
             \end{align*}
             \textbf{Implizite Trapezregel}
             \begin{align*}
-                u_{j+1} &:= u_{j} + \frac{h}{2}(f(t_j,u_j)+f(t_{j+1}+u_{j+1}))
+                u_{j+1} &:= u_{j} + \frac{h}{2}(f(t_j,u_j)+f(t_{j+1},u_{j+1}))
             \end{align*}
             \textbf{Verfahren von Heun, erstes Runge-Kutta-Verfahren 2. Ordnung}
             \begin{align*}
-                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} + u_j + hf(t_j, u_j))) 
+                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} , u_j + hf(t_j, u_j))) 
             \end{align*}
             kann man auch schreiben als:
             \begin{align*}
                 u_{j+1} &:= u_j + \dfrac{h}{2} (k_1 + k_2) 
             \end{align*}
-            mit $k_1 = f(t_j, u_j),$  $k_2 = f(t_{j+1} + u_j + hk_1) $\\
+            mit $k_1 = f(t_j, u_j),$  $k_2 = f(t_{j+1} , u_j + hk_1) $\\
             \textbf{Modifizierter Euler, zweites Runge-Kutta-Verfahren 2. Ordnung}
             \begin{align*}
                 u_{j+1} &= u_j + hk_2
@@ -397,7 +397,7 @@
         \subsection{Steife Differentialgleichungen}
         \setcounter{satz}{1}
         \begin{definition}
-            ein Anfangswertproblemen
+            ein Anfangswertproblem
             \begin{align*}
                 y'(t) &= Ay(t)+c\\
                 y(a) &= y_0
@@ -408,7 +408,7 @@
         \begin{definition}
             Ein Verfahren heißt A-Stabil wenn seine Anwendung auf das Modellproblem
             \begin{align*}
-                y' &= \lambda, & y(0) &= 1, & \text{mit} \lambda &\in \mathbb{C}, & Re(\lambda)&<0
+                y' &= \lambda y , & y(0) &= 1, & \text{mit } \lambda &\in \mathbb{C}, & Re(\lambda)&<0
             \end{align*}
             mit der Lösung
             \begin{align*}
@@ -418,14 +418,14 @@
             \begin{equation*}
                 |u_{j+1}| \leq |u_j|, \mbox{    }\forall j \geq 0
             \end{equation*}
-            bei Einschrittverfahren gilt bei Anwendung auf das Nodellproblem die beziehung 
+            bei Einschrittverfahren gilt bei Anwendung auf das Modellproblem die Beziehung 
             \begin{equation*}
                 u_{j+1} = R(q) u_j \mbox{ mit } q = \lambda h
             \end{equation*}
         \end{definition}
         \setcounter{satz}{4}
         \begin{definition}
-            Mann nennt R die Statbilitätsfunktion des Einschrittverfahrens. Die Menge
+            Man nennt R die Stabilitätsfunktion des Einschrittverfahrens. Die Menge
             \begin{equation*}
                 S = \{q \in \mathbb{C} : |R(q)| \leq 1\}
             \end{equation*}
@@ -449,7 +449,7 @@
             \begin{align*}
                 u_{j+1} &= \dfrac{1}{1-\lambda h} u_j\\
                 R(q) &= \frac{1}{1-q}; q \not = 1\\
-                S&=\{q \in \mathbb{C} : |1+q| \geq 1\} \supset \{q \in \mathbb{C}: Re(q) <0 \}
+                S&=\{q \in \mathbb{C} : |1-q| \geq 1\} \supset \{q \in \mathbb{C}: Re(q) <0 \}
             \end{align*}
             A und L Stabil\\[1ex]
             \textbf{Implizite Trapezregel}
@@ -557,7 +557,7 @@
                 \begin{equation*}
                     x^TAx>0 \forall x \in \mathbb{R} \backslash \{0\}
                 \end{equation*}
-                \item A ist strikt diagonaldominatn, d.h,
+                \item A ist strikt diagonaldominant, d.h,
                 \begin{equation*}
                     |a_{ij} > \sum_{j=1\not=i}^n|a_{ij}|, i= 1,\dots,n
                 \end{equation*}
@@ -575,17 +575,17 @@
         \begin{align*}
             A&=A^T, & x^TAx &>0 & \forall x &\in \mathbb{R}^n \backslash \{0\}
         \end{align*}
-        positiv semie definit falls
+        positiv semi definit falls
         \begin{align*}
             A&=A^T, & x^TAx &\geq 0 & \forall x &\in \mathbb{R}^n \backslash \{0\}
         \end{align*}
     \end{definition}
     \begin{satz}
-        Es sei A positiv definit, Dann gibt es genau eine untere Dreickmatrix L mit positiven Diagonaleinträgen $l_{ii} > 0$, so das
+        Es sei A positiv definit, Dann gibt es genau eine untere Dreieckmatrix L mit positiven Diagonaleinträgen $l_{ii} > 0$, so dass
         \begin{equation*}
             LL^T = A \mbox{ } \text{(Cholesky-Zerlegung)}
         \end{equation*}
-        Ferner besist A eine eindeutige Dreickszerlegung
+        Ferner besitzt A eine eindeutige Dreickszerlegung
         \begin{equation*}
             \tilde{L}\tilde{R}= A,
         \end{equation*}
@@ -648,23 +648,25 @@
                     \dfrac{||\tilde{x} - x||}{||x||} \leq \dfrac{cond(A)}{1-cond(A)||\Delta A|| / ||A||} \left(\dfrac{||\Delta A||}{||A||} + \dfrac{|| \Delta b||}{||b||}\right)
                 \end{equation*}
             \end{satz}
+            \newpage
     \section{Nichtlineare Gleichungssysteme}
-            \subsection{Einführung}
+            %\subsection{Einführung}
+            \stepcounter{subsection}
             \subsection{Das Newton-Verfahren}
                 \subsubsection{Herleitung}
                 \begin{satz}
                     \begin{align*}
-                        x_{k+1} &= x_k - J_{f}(x_k)^{-1}F(x_k)\\
-                        x_{k+1} &= x_k + s_k\\
-                        s_k \text{ Lösung von } J_F(x_k)s_k &= - F(x_k)
+                        x^{(k+1)} &= x^{(k)} - J_{F}(x^{(k)})^{-1}F(x^{(k)})\\
+                        x^{(k+1)} &= x^{(k)} + s^{(k)}\\
+                        s^{(k)} \text{ Lösung von } J_F(x^{(k)})s^{(k)} &= - F(x^{(k)})
                     \end{align*}
                 \end{satz}
                 \begin{satz}
-                    Algo für Lokales Newton-Verfahren
+                    Algorithmus für Lokales Newton-Verfahren
                     \begin{enumerate}
-                        \item Falls $F(x_k) = 0$ STOPP mit Ergebnis $x_k$
-                        \item Berechne $s_k$
-                        \item $x_{k+1} = x_k + s_k$
+                        \item Falls $F(x^{(k)}) = 0$ STOPP mit Ergebnis $x^{(k)}$
+                        \item Berechne $s^{(k)}$
+                        \item $x^{k+1} = x^{(k)} + s^{(k)}$
                     \end{enumerate}
                 \end{satz}
             \subsubsection{Superlineare und quadratische lokale Konvergenz des Newton-Verfahrens}
@@ -676,16 +678,16 @@
                         \begin{equation*}
                             B_\delta(\tilde{x}) := \{x \in \mathbb{R}^n: ||x-\tilde{x}||_2 < \delta \}
                         \end{equation*}
-                        \item Für alle $x_0 \in B_\delta(\tilde{x})$ Terminiert der Algorithmus 5.2.2 entweder mit $x_k = \tilde(x)$ oder erzeugt eine Folge $(x_k) \subset B_\delta(\tilde{x})$, die superlinear gegen
+                        \item Für alle $x_0 \in B_\delta(\tilde{x})$ Terminiert der Algorithmus 5.2.2 entweder mit $x^{(k)} = \tilde{x}$ oder erzeugt eine Folge $(x^{(k)}) \subset B_\delta(\tilde{x})$, die superlinear gegen
                         $\tilde{x}$ konvergiert d. h.
                         \begin{align*}
-                            \lim_{k \rightarrow \infty} x_k &= \tilde{x} &\text{wobei}&& ||x_{k+1}-\tilde{x}||_2 &\leq v_k||x_k - \tilde{x}||_2
+                            \lim_{k \rightarrow \infty} x^{(k)} &= \tilde{x} &\text{wobei}&& ||x_{k+1}-\tilde{x}||_2 &\leq v_k||x^{(k)} - \tilde{x}||_2
                         \end{align*}
                         mit einer Nullfolge $v_k \searrow 0$
                         \item ist F' Lipschitz-stetig auf $B_\delta(\tilde{x})$ mit Konstante L
                         dann konvergiert $(x_k)$ sogar quadratisch gegen $\tilde{x}$, d.h.
                         \begin{align*}
-                            \lim_{k \rightarrow \infty} x_k &= \tilde{x} & \text{wobei} && ||x_{k+1} - \tilde{x}||_2 \leq C ||x_k - \tilde{x}||_2^2
+                            \lim_{k \rightarrow \infty} x^{(k)} &= \tilde{x} & \text{wobei} && ||x_{k+1} - \tilde{x}||_2 \leq C ||x^{(k)} - \tilde{x}||_2^2
                         \end{align*}
                         wobei für $\delta > 0$ klein genug $C = L ||F'(\tilde{x})^{-1}||_2$ gewählt werden kann.
                         Automatisch wenn zwei mal diffbar in B
@@ -693,31 +695,31 @@
                     
                 \end{satz}
             \subsubsection{Globalisierung des Newton-Verfahrens}
-                \textbf{schrittweitenwahl nach Armijo}:\\
-                sei $\delta \in ]0, \frac{1}{2}[$ (z.B $10^{-3}$) fest gegeben. 
+                \textbf{Schrittweitenwahl nach Armijo}:\\
+                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben. 
                 Wähle das Größte $\sigma_k \in \{1, \frac{1}{2}, \frac{1}{4}, \dots\}$ mit 
                 \begin{equation*}
-                    ||F(x_k + \sigma_k s_k)||_2^2 \leq ||F(x_k)||_2^2-2\delta \sigma_k ||F(x_k)||_2^2
+                    ||F(x^{(k)} + \sigma_k s^{(k)})||_2^2 \leq ||F(x^{(k)})||_2^2-2\delta \sigma_k ||F(x^{(k)})||_2^2
                 \end{equation*} 
                 \begin{satz}
                     Algo für das Globalisierte Newton-Verfahren:
                     \begin{enumerate}
-                        \item Falls $F(x_k) = 0$ STOPP mit Ergebnis $x_k$
-                        \item Berechne $s_k$
+                        \item Falls $F(x^{(k)}) = 0$ STOPP mit Ergebnis $x^{(k)}$
+                        \item Berechne $s^{(k)}$
                         \item Bestimme $\sigma_k$ nach Armijo
-                        \item $x_{k+1} = x_k + \delta_ks_k$
+                        \item $x_{k+1} = x^{(k)} + \sigma_ks^{(k)}$
                     \end{enumerate}
                 \end{satz}\newpage
-    \section{Verfahen zur Eigenwert- und Eigenvektorberechnung}
+    \section{Verfahren zur Eigenwert- und Eigenvektorberechnung}
         \subsection{Eigenwertprobleme}
             \subsubsection{Grundlagen}
                 \begin{definition}
-                    Eine zahl $\lambda \in \mathbb{C}$ heißt Eigenwert einer Matrix $A \in \mathbb{C}^{n \times n}$,
-                    wenn es einen Vektor $x \in \mathbb{C}^n$ gitb mit 
+                    Eine Zahl $\lambda \in \mathbb{C}$ heißt Eigenwert einer Matrix $A \in \mathbb{C}^{n \times n}$,
+                    wenn es einen Vektor $x \in \mathbb{C}^n$ gibt mit 
                     \begin{equation*}
                         Ax = \lambda x
                     \end{equation*}
-                    Jedes solcher Vektor $x \in \mathbb{C}^n$ heißt (Rechts-)Eigenvektor zum Eigenwert $\lambda$-
+                    Jeder solche Vektor $x \in \mathbb{C}^n$ heißt (Rechts-)Eigenvektor zum Eigenwert $\lambda$.
                     Die Menge $\sigma(A)$  aller Eigenwerte von A heißt Spektrum von A\\
                     Der Unteraum
                     \begin{equation*}
@@ -727,8 +729,8 @@
                     \begin{equation*}
                         \gamma(\lambda):= \dim \text{Eig}_A(\lambda) = n - \text{Rang}(A-\lambda I)
                     \end{equation*}
-                    ist die geometrische Vielfachheit von $\lambda$ und gibt die Maximal linear unabhängigen Eigenvektoren zu $\lambda$ an.\\
-                    $\lambda$ ist EW zu A gdw:
+                    ist die geometrische Vielfachheit von $\lambda$ und gibt die Maximalzahl linear unabhängigen Eigenvektoren zu $\lambda$ an.\\
+                    $\lambda$ ist EW zu A wenn:
                     \begin{equation*}
                         \chi(\lambda):= \det(A-\lambda I) = 0
                     \end{equation*}
@@ -748,14 +750,15 @@
                     \begin{enumerate}[label=\alph*)]
                         \item Ist $\lambda$ EW von A, so ist $\lambda$ EW von $A^T$ und $\bar\lambda$ EW von $A^H := \bar{A}^T$
                         \item für jede nichtsinguläre Matrix $T \in \mathbb{C}^{n \times n}$ hat die zu A ähnliche Matrix $B:= T^{-1}AT$,
-                        das selbe charakteristische Polynom un die selben Eigenwerte wie A. Ist $x$ Eigenvektor von A,
+                        das selbe charakteristische Polynom und die selben Eigenwerte wie A. Ist $x$ Eigenvektor von A,
                         so ist $y:= T^{-1}x$ Eigenvektor von B
                         \item Ist A hermitisch also $A^H = A$, dann hat A lauter reele Eigenwerte. ist A unitär, also
                         $A^H = A^{-1}$, so gilt $|\lambda|=1$ für jeden Eigenwert $\lambda$
                     \end{enumerate}
                 \end{definition}
-            \subsubsection{Beispiele}
-                damit Nummerierung passt
+            %\subsubsection{Beispiele}
+                %damit Nummerierung passt
+            \stepcounter{subsubsection}
             \subsubsection{Grundkonzepte numerischer Verfahren}
                 \textbf{Vektoriteration}
                 \begin{equation*}
@@ -782,10 +785,9 @@
                     \begin{enumerate}[label=\alph*)]
                         \item \begin{align*}
                             \sigma(A) &\subset \bigcup_{i=1}^n K_i\\
-                            K_i &= \left\{\mu \in \mathbb{C}_ |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{(zeilensumme ohne diag)}\right\}
+                            K_i &= \left\{\mu \in \mathbb{C} : |\mu - a_{ii}| \leq \sum_{j = 1, j \not = i}^n|a_{ij}|\text{ (Zeilensumme ohne Diagonale)}\right\}
                         \end{align*}
-                        \item ist die Vereinigung $G_1$ von k Greshgorin-kreisen disjunkt von der Vereinigung $G_2$ der restlichen
-                        n-k Kreise, dann enthält $G_1$ genau k EWs udn $G_2$ genau n-k EWs von A
+                        \item ist die Vereinigung $G_1$ von k Gershgorin-Kreisen disjunkt von der Vereinigung $G_2$ der restlichen n-k Gershgorin-Kreise, dann enthält $G_1$ genau k EWs und $G_2$ genau n-k EWs von A
                     \end{enumerate}
                 \end{satz}
                 \begin{satz}
@@ -873,6 +875,7 @@
                 \end{align*}
             \end{itemize}
         \end{definition}
+        \newpage
     \section{Grundbegriffe der Statistik und Wahrscheinlichkeitstheorie}
         \subsection{Messreihen}
             \begin{itemize}
@@ -880,7 +883,7 @@
                 \item quantitativ stetig:  Die Mermale sind reele Zahlen
             \end{itemize}
             \begin{definition}
-                zu $x_1,x_2,\dots,x_n$ ist $x_{(1)},x_{(2)},\dots,x_{(n)}$ die Geordnete Messreihe mit $x_{(1)} \leq x_{(2)}\leq \dots \leq x_{(n)}$\\
+                zu $x_1,x_2,\dots,x_n$ ist $x_{(1)},x_{(2)},\dots,x_{(n)}$ die geordnete Messreihe mit $x_{(1)} \leq x_{(2)}\leq \dots \leq x_{(n)}$\\
                 Die Empirische Verteilungsfunktion hierzu ist
                 \begin{equation*}
                     F(z;x_1,x_2,\dots,x_n)= F(z)=\dfrac{\text{Zahl der} x_i \text{ mit } x_i \leq z}{n} 
@@ -895,7 +898,7 @@
                 F(a_1),F(a_2)-F(a_1), \dots, F(a_{r-1})-F(a_{r-2}), 1 - F(a_{r-1})
             \end{equation*}
             Für Histogram wähle $a_0 < \min (a_1, x_{(1)})$, $a_r > \max{a_{r-1}, x_{(n)}}$.
-            Für jede Klassenhäufigkeit: Teile Durch klassenbreite Un zeichne in Diagramm\newpage
+            Für jede Klassenhäufigkeit: Teile durch Klassenbreite und zeichne in Diagramm
         \subsection{Lage- und Streumaßzahlen}
             \subsubsection{Lagemaßzahlen}
                 \textbf{Arithmetisches Mittel:}
@@ -958,7 +961,7 @@
                 \end{equation*}
                 \textbf{Empirischer Korrelationskoeffizient}
                 \begin{equation*}
-                    r_{xy} = \dfrac{s_xy}{s_x s_y}
+                    r_{xy} = \dfrac{s_{xy}}{s_x s_y}
                 \end{equation*}
             \subsubsection{Regressionsgerade}
                 \begin{align*}
@@ -1001,7 +1004,7 @@
             \subsubsection{Wahrscheinlichkeit}
                 \setcounter{satz}{3}
                 \begin{definition}
-                    Ein System $\mathscr{A} \subseteq \mathscr{P}(\Omega)$ von Ereignissen heißt $\sigma$-Alebra (oder Ereignissystem) wenn gilt:
+                    Ein System $\mathscr{A} \subseteq \mathscr{P}(\Omega)$ von Ereignissen heißt $\sigma$-Algebra (oder Ereignissystem) wenn gilt:
                     \begin{enumerate}[label=\alph*)]
                         \item $\Omega \in \mathscr{A}$
                         \item Falls $A \in \mathscr{A}$, dann auch $A^c \in \mathscr{A}$
@@ -1023,7 +1026,7 @@
                     P(A)= \dfrac{\text{Elementzahl von A}}{n} = \frac{\#A}{\#\Omega}
                 \end{equation*}
             \subsubsection{Elementare Formeln der Kombinatorik}
-                \textbf{Geodnete Probe mit Wiederholungen}\\
+                \textbf{Geordnete Probe mit Wiederholungen}\\
                 \begin{equation*}
                     n^k
                 \end{equation*}
@@ -1042,7 +1045,7 @@
                     \binom{n}{k} = \dfrac{n!}{k!(n-k)!}
                 \end{equation*}
                 Bsp: Lotto\\
-                \textbf{$k_1$ aus $N_1$,$k_2$ aus $N_2$ in k aus N}
+                \textbf{$k_1$ aus $N_1$,$k_2$ aus $N_2$ in $k$ aus $N$}
                 \begin{equation*}
                     \dfrac{\binom{N_1}{k_1}\binom{N_2}{k_2}}{\binom{N}{k}}
                 \end{equation*}
@@ -1081,14 +1084,13 @@
             \begin{definition}
                 Eine Zufallsvariable ist eine Abbildung
                 \begin{equation*}
-                    x: \Omega \rightarrow \mathbb{R}
+                    X: \Omega \rightarrow \mathbb{R}
                 \end{equation*}
                 mit der Eigenschaft, dass für jedes Intervall $I \subseteq \mathbb{R}$ die Urbildmenge
                 \begin{equation*}
                     A = \{\omega \in \Omega: X(\omega) \in I\}
                 \end{equation*}
-                zum Ereignissystem $\mathscr{A}$ gehört. Die Wahrscheinlichkeit dieses Ereignisses "X nimmt Werte im Interval I an"
-                bezeichnet man abkürzend mit $P(X\in I)$ und schreibt
+                zum Ereignissystem $\mathscr{A}$ gehört. Die Wahrscheinlichkeit dieses Ereignisses "X nimmt Werte im Interval I an" bezeichnet man abkürzend mit $P(X\in I)$ und schreibt
                 \begin{align*}
                     P(A \leq X \leq B), & P(X \leq x), & P(|X-a|<b), &P(X=b), & usw
                 \end{align*}
@@ -1148,7 +1150,7 @@
                         P(X=i) = \dfrac{\lambda^i}{i!}e^{-\lambda} \mbox{, } i = 0,1,2,\dots
                     \end{equation*}
                     Sie eignet sich zur Modellierung von Zählergebnissen folgenden Typs: In einer Telefonzentrale
-                    wird die Anzahl der innerhalb von 10 Minuten eingehenden Anrufe gezählt. λ gibt die „mittlere
+                    wird die Anzahl der innerhalb von 10 Minuten eingehenden Anrufe gezählt. $\lambda$ gibt die „mittlere
                     Anzahl“ der eingehenden Anrufe an.\\
                     $E(X) = \lambda$
             \subsubsection{Beispiele für Stetige Verteilungen}
@@ -1190,7 +1192,7 @@
                     \end{equation*}
                     $E(X) = \dfrac{1}{\lambda}$
                 \subsubsection*{Normalverteilung}
-                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Varianz). Eine Stetig verteilte Zufallsvariable mit der Dichte
+                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
                     \begin{equation*}
                         f(t)= \dfrac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{t- \mu}{\sigma})^2}\mbox{, }t \in \mathbb{R}
                     \end{equation*}
@@ -1209,7 +1211,7 @@
                         F_{\mu, \sigma^2}(x) = \Phi(\dfrac{x-\mu}{\sigma})
                     \end{equation*}
         \subsection{Erwartungswert und Varianz}
-            Ist X eine Diskret verteilte Zufallsvariable mit werten $x_1, x_2, \dots$ so heißt
+            Ist X eine Diskret verteilte Zufallsvariable mit Werten $x_1, x_2, \dots$ so heißt
             \begin{equation*}
                 E(X) = \sum_i x_i P(X=x_i)
             \end{equation*}
@@ -1224,7 +1226,7 @@
             \begin{equation*}
                 E(h(X)) = E(X) = \sum_i h(x_i) P(X=x_i)
             \end{equation*}
-            Ist X stetig verteilt mit Dichte $f$m dann hat $h(X)$ den Erwartungswert
+            Ist X stetig verteilt mit Dichte $f$, dann hat $h(X)$ den Erwartungswert
             \begin{equation*}
                 E(h(X)) = \int_{-\infty}^\infty h(x) f(x) dx 
             \end{equation*}
@@ -1295,7 +1297,6 @@
                         Var(X_1+\dots+X_n) = Var(X_1) + \dots + Var(X_n)
                     \end{equation*}
                 \end{satz}
-                \newpage
         \subsection{Gesetz der großen Zahlen, zentraler Grenzwertsatz}
             \subsubsection{Das schwache gesetz der großen Zahlen}
                 \begin{satz}
@@ -1319,7 +1320,7 @@
                             \dfrac{X_1+\dots+X_n- (\mu_1+\dots+\mu_n)}{\sqrt{\sigma_1^2+\dots+\sigma_n^2}}\leq y
                         \right) = \Phi(y) \mbox{ }\forall y \in \mathbb{R}
                     \end{equation*}
-                    Ein Arimtetisches Mittel $\bar{X}_{(n)}$ ist für großes n also Näherungsweise $N(\mu, \sigma^2)$ verteilt, wobei
+                    Ein Arithmetisches Mittel $\bar{X}_{(n)}$ ist für großes n also Näherungsweise $N(\mu, \sigma^2)$ verteilt, wobei
                     \begin{align*}
                         \mu &= \dfrac{1}{n}E(X_1+\dots+X_n) = \dfrac{1}{n}(\mu_1+...+\mu_n) & \sigma^2 &= \dfrac{1}{n^2} Var(X_1+\dots+X_n)= \dfrac{1}{n^2}(\sigma_1^2+\dots+\sigma_n^2) 
                     \end{align*}
@@ -1359,7 +1360,7 @@
                 \dfrac{Z_{r+1}}{\sqrt{(Z_1^2+\dots+Z_r^2)/r}} \leq x
             \right) \mbox{, } x \in \mathbb{R}
         \end{equation*}
-        besitzt\newpage
+        besitzt
         $\mathbf{F_{r,s}}$\textbf{-Verteilung}\\
         Es sei $r,s \in \{1,\dots,n-1\}$ mit $r+s\leq n$. 
         Eine Zufallsvariable X heißt F-verteilt mit r und s Freiheitsgraden, falls sie die Verteilungsfunktion
@@ -1463,7 +1464,7 @@
         \subsection{Maximum-Likelihood-Schätzer}
             Bei gegebener Verteilungsklasse $F_\theta, \theta \in \Theta$,
             lassen sich Schätzer für den Parameter $\theta$ oft mit der Maximum-Likelihood-Methode gewinnen.
-            Sind die zugrundeliegenden Zufallsvariablen $X_1,\dots , X_n$ stetig mit einer Dichte verteilt, so
+            Sind die zugrundeliegenden Zufallsvariablen $X_1,\dots , X_n$ stetig mit einer \textbf{Dichte} verteilt, so
             hängt diese ebenfalls von den Parametern ab:
             \begin{equation*}
                 f_\theta(x), x \in \mathbb{R}.
@@ -1492,7 +1493,7 @@
                 \begin{equation*}
                     T_n:\mathbb{X}^n\rightarrow \Theta \mbox{, }T_n(x_1,\dots,x_n) = \hat{\theta}(x_1, \dots, x_n)
                 \end{equation*}
-                Maximum-Likelihood-Schätzern
+                Maximum-Likelihood-Schätzer.
             \end{definition}
         \subsection{Konfidenzintervalle}
             \begin{definition}
