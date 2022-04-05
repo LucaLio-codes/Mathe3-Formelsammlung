@@ -255,6 +255,7 @@
             \textbf{Allgemeiner Fehler}
             \begin{equation*}
                 \int_a^b \left\| f(x)  - p_n(x) \right\| dx \leq \dfrac{\left\| f^{(n+1)}(\xi)\right\|}{(n+1)!}(b-a)^{n+2}
+                = \max_{x \in [a,b] } \dfrac{ | f^{(n+1)}(x)| }{(n+1)!}(b-a)^{n+2}
             \end{equation*}
             \textbf{Berechnung}
             \begin{align*}
@@ -289,7 +290,7 @@
             \end{array}
         \end{equation*}\newpage
     \subsection{Summierte Newton-Cotes}
-    Newton Cotes nur auf kleinen Intervallen präzise in kleinen Intervalen\\
+    Newton Cotes nur auf kleinen Intervallen präzise\\
     Idee: Aufteilen in Teilintervalle $m$
     \begin{align*}
         N &= n \cdot m & H&= \dfrac{b-a}{m} & h&= \dfrac{b-a}{N}\\
@@ -571,7 +572,7 @@
             \end{itemize}
     \subsection{Das Cholesky Verfahren}
     \begin{definition}
-        eine reele Matrix heißt positiv definit falls
+        eine reelle Matrix heißt positiv definit falls
         \begin{align*}
             A&=A^T, & x^TAx &>0 & \forall x &\in \mathbb{R}^n \backslash \{0\}
         \end{align*}
@@ -585,7 +586,7 @@
         \begin{equation*}
             LL^T = A \mbox{ } \text{(Cholesky-Zerlegung)}
         \end{equation*}
-        Ferner besitzt A eine eindeutige Dreickszerlegung
+        Ferner besitzt A eine eindeutige Dreieckszerlegung
         \begin{equation*}
             \tilde{L}\tilde{R}= A,
         \end{equation*}
@@ -928,6 +929,7 @@
                 \textbf{Empirische Varianz oder empirische Stichprobenvarianz}:
                 \begin{equation*}
                     s^2 = \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2
+                    = \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i^2\right) - n\bar{x}^2 \right)
                 \end{equation*}
                 \textbf{Empirische Streuung:}
                 \begin{equation*}
@@ -948,7 +950,8 @@
                 \end{align*}
                 \textbf{Empirische Varianz}:
                 \begin{align*}
-                    s_x^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 & s_y^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2
+                    s_x^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 & s_y^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2\\
+                     &= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i^2\right) - n\bar{x}^2 \right) & &= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(y_i^2\right) - n\bar{y}^2 \right)
                 \end{align*}
                 \textbf{Empirische Streuung:}
                 \begin{align*}
@@ -956,7 +959,8 @@
                 \end{align*}
                 \textbf{Empirische Kovarianz}
                 \begin{equation*}
-                    s_{xy}= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})
+                    s_{xy}= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})\\
+                    s_{xy}= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i y_i\right) - n \bar{x} \bar{y} \right)
                 \end{equation*}
                 \textbf{Empirischer Korrelationskoeffizient}
                 \begin{equation*}
@@ -1061,7 +1065,7 @@
                 \end{equation*}
                 \textbf{Formel von Bayes}
                 \begin{equation*}
-                    P(A_i|B) = \dfrac{P(A_i)P(B|A_i)}{\sum_{k=1}^n P(A_k)P(B|A_k)}
+                    P(A_i|B) = \dfrac{P(A_i)P(B|A_i)}{\sum_{k=1}^n P(A_k)P(B|A_k)} = \dfrac{P(A_i)P(B|A_i)}{P(B)}
                 \end{equation*}
                 \textbf{Multiplikationsformel}
                 \begin{equation*}
@@ -1197,9 +1201,9 @@
                     \end{equation*}
                     heißt normalverteilt mit Parameter $\mu$ und $\sigma^2$ kurz: $N(\mu, \sigma^2)$.
                     Im Falle $\mu = 0$, $\sigma^2 =1$ spricht man von einer Standard-Normalverteilung mit der Verteilungsfunktion
-                    \begin{equation*}
-                        \Phi(x) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^x e^{-t^2/2}\mbox{, } x \geq 0
-                    \end{equation*}
+                    \begin{align*}
+                        \Phi(x) &= \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^x e^{-t^2/2}\mbox{, } x \geq 0 & \Phi(x) &= P(X \leq x)
+                    \end{align*}
                     (Kann aus Tabelle Entnommen werden)\\
                     Es gilt:
                     \begin{align*}
