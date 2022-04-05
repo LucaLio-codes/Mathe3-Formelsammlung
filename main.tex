@@ -204,7 +204,7 @@
             \begin{equation*}
                 \begin{matrix}
                     b_0 = \dfrac{y_1-y_0}{h_0} - f'(a) & b_n = f'(b) - \dfrac{y_n - y_{n-1}}{h_{n-1}} & & \\
-                    \lambda_0 =\dfrac{h_0}{3} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\ 
+                    \lambda_0 =\dfrac{h_0}{6} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\
                 \end{matrix}
             \end{equation*}
             \begin{equation*}
@@ -473,7 +473,7 @@
                     \hline\\[-\normalbaselineskip]
                     & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta_{r}
                 \end{array}\\
-                u_j+1 &= (1+ q\beta^T (I - qA)^{-1}\mathbf{1})u_j\\
+                u_{j+1} &= (1+ q\beta^T (I - qA)^{-1}\mathbf{1})u_j\\
                 R(q) &= 1 + q\beta^T(I-qA)^{-1}\mathbf{1}= \dfrac{\det(I-qA+q\mathbf{1}\beta^T)}{\det(I-qA)}
             \end{align*}
             \newpage
@@ -633,7 +633,7 @@
                 Sei $A \in \mathbb{R}^{n\times n}$ invertierbar und sein $|| \cdot||$ eine induzierte Matrixnorm. Dann heißt die Zahl $cond(A) = ||A||\mbox{ }||A^{-1}||$ die Konditionszahl von A bezüglich der Matrixnorm
             \end{definition}
             \begin{satz}
-                (Störeinfluss von Matrix un rechter Seite). Sei $A \in \mathbb{R}^{n \times n}$ invertierbar, $b,\Delta b \in \mathbb{R}^n, b \not = 0$ und $\Delta A \in \mathbb{R}^{n \times n}$ mit $||\delta A|| < 1/ ||A^{-1}||$
+                (Störeinfluss von Matrix und rechter Seite). Sei $A \in \mathbb{R}^{n \times n}$ invertierbar, $b,\Delta b \in \mathbb{R}^n, b \not = 0$ und $\Delta A \in \mathbb{R}^{n \times n}$ mit $||\delta A|| < 1/ ||A^{-1}||$
                 mit einer beliebigen durch eine Norm $||\cdot||$ auf $\mathbb{R}^n$ induzierten Matrixnorm $||\cdot||$.
                 Ist $x$ die Lösung von
                 \begin{equation*}
@@ -806,12 +806,12 @@
                 \begin{definition}
                     für eine Matrix $B \in \mathbb{C}^{n \times n}$ ist die Vektoriteration gegeben durch
                     \begin{equation*}
-                        z^{(k+1)} = \dfrac{1}{||Bz_{(k)}||}Bz_{(k)}, \mbox{ mit }= 0,1, \dots
+                        z^{(k+1)} = \dfrac{1}{||Bz^{(k)}||}Bz^{(k)}, \mbox{ mit }= 0,1, \dots
                     \end{equation*}
-                    mit einem Startvektor $z^{(0)} \in C^n \backslash {0}$
+                    mit einem Startvektor $z^{(0)} \in C^n \backslash \{0\}$
                 \end{definition}
-                mit geigneter Wahl von B erhält man so Näherungen an einen Eigenvektor zu $\lambda$
-                Eine Eigenwertnäherung für $\lambda$ erhählt man dann durch den \textbf{Rayleighquotienten}
+                mit geeigneter Wahl von B erhält man so Näherungen an einen Eigenvektor $z^{(k)}$ zu Eigenwert $\lambda$.\\
+                Eine Eigenwertnäherung für $\lambda$ erhält man dann durch den \textbf{Rayleighquotienten}
                 \begin{equation*}
                     R(z^{(k)},B)=\dfrac{(z^{(k)})^HBz^{(k)}}{(z^{(k)})^Hz^{(k)}}
                 \end{equation*}
@@ -820,7 +820,7 @@
                     \begin{equation}
                         \lambda_1,\dots,\lambda_r, \mbox{ }|\lambda_r| > |\lambda_{r+1}| \geq \dots \geq|\lambda_n|
                     \end{equation}
-                    mit r < n. Falls der Startvektor $z^{(0)}$ einen Anteil in $\text{Eig}_B(\lambda_1)$ besitzt, gilf für die Vektoriteration
+                    mit r < n. Falls der Startvektor $z^{(0)}$ einen Anteil in $\text{Eig}_B(\lambda_1)$ besitzt, gilt für die Vektoriteration
                     \begin{equation*}
                         R(z^{(k)},B)=\dfrac{(z^{(k)})^HBz^{(k)}}{(z^{(k)})^Hz^{(k)}} = \lambda_1 + O(q^k) \text{ für } k \rightarrow \infty, \mbox{ } q=\dfrac{\lambda_{r+1}}{\lambda_1} < 1
                     \end{equation*}
@@ -830,12 +830,11 @@
                     \end{equation*}
                     wobei $x_1$ den Anteil von $z^{(0)}$ in $\text{Eig}_B(\lambda_1)$ Bezeichnet
                 \end{satz}
-                \newpage
-            \subsubsection{Die Vektoriteration nach v. Mieses unnd Wielandt}
-                Sei $A\in \mathbb{C^{n\times n}}$ gegeben \\
-                \textbf{Einfache Vektoriteration nach von Mises}\\
-                Erhält man durch die Wahl von B = A
-                \textbf{Inverse Vektoriteration von Wieland}
+            \subsubsection{Die Vektoriteration nach v. Mises und Wielandt}
+                Sei $A\in \mathbb{C}^{n\times n}$ gegeben \\
+                \textbf{Einfache Vektoriteration nach von Mises} \\
+                Erhält man durch die Wahl von B = A\\
+                \textbf{Inverse Vektoriteration von Wieland}\\
                 für $\mu \not = \lambda_j$ hat die Matrix $B=(A-\mu I)^{-1}$ die EWs
                 \begin{equation*}
                     \mu_i = \dfrac{1}{\lambda_i - \mu}
@@ -858,7 +857,7 @@
                     z^{(k)} &= \dfrac{|\lambda_j-\mu|^k}{(\lambda_j-\mu)^k}\dfrac{x_j}{||x_j||}+O(q^k)
                 \end{align*}
                 wobei $x_j$ den Anteil von $z^{(0)}$ in $\text{Eig}_A(\lambda_j) = \text{Eig}_{(A-\mu I)^{-1}}(1/(\lambda_j - \mu))$.
-                Ist A debei hermitisch, so erfüllt der Rayleigh-Quotient
+                Ist A dabei hermitisch, so erfüllt der Rayleigh-Quotient
                 \begin{equation*}
                     R(z^{(k)}, (A - \mu I)^{-1}) = \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}} = \dfrac{1}{\lambda_i - \mu} + O(q^{2k})
                 \end{equation*}
@@ -932,7 +931,7 @@
                 \end{equation*}
                 \textbf{Empirische Streuung:}
                 \begin{equation*}
-                    s = \sqrt{s^2} \text{ ...duhhhhh}
+                    s = \sqrt{s^2}
                 \end{equation*}
                 \textbf{Spannweite:}
                 \begin{equation*}
@@ -1192,7 +1191,7 @@
                     \end{equation*}
                     $E(X) = \dfrac{1}{\lambda}$
                 \subsubsection*{Normalverteilung}
-                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
+                    Es seien $\mu \in \mathbb{R}$ (Erwartungswert) und $\sigma > 0$ (Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
                     \begin{equation*}
                         f(t)= \dfrac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{t- \mu}{\sigma})^2}\mbox{, }t \in \mathbb{R}
                     \end{equation*}
@@ -1398,7 +1397,8 @@
                     \item $\bar{X}_{(n)} $ und $S^2_{(n)}$ sind unabhängig
                     \item $\sqrt{n}\frac{\bar{X}_{(n)}- \mu}{\sqrt{S^2_{(n)}}}$ ist $t_{n-1}$-verteilt
                 \end{itemize}
-            \end{satz}\newpage
+            \end{satz}
+            \newpage
     \section{Schätzverfahren und Konfidenzintervalle}
         \subsection{Grundlagen zu Schätzverfahren}
             \setcounter{satz}{1}
@@ -1459,7 +1459,7 @@
             \end{satz}
             \begin{satz}
                 Ist $T_1,T_2,\dots$ eine Folge von Schätzern, die konsistent im quadratischen Mittel für $\tau$ ist,
-                dann ist die Folge von Schätzern konsistent für $tau$
+                dann ist die Folge von Schätzern konsistent für $\tau$
             \end{satz}
         \subsection{Maximum-Likelihood-Schätzer}
             Bei gegebener Verteilungsklasse $F_\theta, \theta \in \Theta$,
@@ -1580,7 +1580,7 @@
                      \end{enumerate}
                 \subsubsection*{$\chi^2$-Streuungstest}
                     \begin{enumerate}
-                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\mu2$ unbekannt
+                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\mu$ unbekannt
                         \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
                         \item Testgröße
                         \begin{equation*}
