@@ -118,7 +118,9 @@
            \centering
        \end{figure}
        Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
-       
+
+       Hinweis: Man kann Zeilen vertauschen. Das heißt wenn viele $f_{[x]} = 0$ lohnt es sich meist diese nach oben zu tauschen.
+
        \subsubsection{Fehlerabschätzung}
        \setcounter{satz}{2}
        \begin{satz}
@@ -140,8 +142,8 @@
        Sei $f:[a,b] \rightarrow \mathbb{R}$ bijektiv.
        Sind dann alle $(x_i,y_i), y_i = f(x_i)$ Stützpunkte von $f$
        dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kann durch Interpolation dieser
-       gewonnen werden
-       \newpage
+       gewonnen werden.
+
        \subsection{Spline-Interpolation}
             \begin{definition}
                 Eine Splinefunktion der Ordnung $k$ zur Zerlegung $\Delta$ ist eine Funktion $s:[a,b]\rightarrow \mathbb{R}$ mit folgenden Eigenschaften:
@@ -322,6 +324,12 @@
 
 \section{Numerische Behandlung von Anfangswertproblemen gewöhnlicher Differentialgleichungen}
     \subsection{Einführung}
+            $t_j$ sind die Stützpunkte. Also untere Grenze + Schrittweite ($a + j*h$)
+            \begin{align*}
+                u_j &\approx y(t_j)\\
+                y'(t) &= f(t,u_j)\\
+                u_{j+1} &= u_j + \phi(t,h;u)
+            \end{align*}
         \subsubsection{Verfahren}
             \textbf{Expliziter Euler}
             \begin{align*}
@@ -337,7 +345,7 @@
             \end{align*}
             \textbf{Verfahren von Heun, erstes Runge-Kutta-Verfahren 2. Ordnung}
             \begin{align*}
-                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} , u_j + hf(t_j, u_j))) 
+                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} , u_j + hf(t_j, u_j)))
             \end{align*}
             kann man auch schreiben als:
             \begin{align*}
@@ -360,7 +368,7 @@
             \textbf{r-stufiges explizites Runge-Kutta-Verfahren}
             \begin{align*}
                 k_i (t,u,h) &= k_i := f(t+\gamma_i h, u+h \sum_{j=1}^{i-1}\alpha_{ij}k_j), i = 1 \dots r\\
-                \phi(t,h;u) &= \sum_{i=1}^r \beta_i k_i \\
+                \phi(t,h;u) &= \sum_{i=1}^r \beta_i k_i\\
                 \mathbf{Butcher-Schema} & \\
                 &
                 \begin{array} {c | c c c c c}
@@ -419,7 +427,7 @@
             \begin{equation*}
                 |u_{j+1}| \leq |u_j|, \mbox{    }\forall j \geq 0
             \end{equation*}
-            bei Einschrittverfahren gilt bei Anwendung auf das Modellproblem die Beziehung 
+            bei Einschrittverfahren gilt bei Anwendung auf das Modellproblem die Beziehung
             \begin{equation*}
                 u_{j+1} = R(q) u_j \mbox{ mit } q = \lambda h
             \end{equation*}
@@ -662,6 +670,12 @@
                         s^{(k)} \text{ Lösung von } J_F(x^{(k)})s^{(k)} &= - F(x^{(k)})
                     \end{align*}
                 \end{satz}
+                Bei $f(x) : \mathbb{R}^1\rightarrow\mathbb{R}^1$
+                \begin{align*}
+                    J_{F}(x^{(k)})^{-1} &= F'(x^{(k)})\\
+                    s^{(k)} &= - \frac{F(x^{(k)}}{F'(x^{(k)}})
+                    x^{(k+1)} &= x^{(k)} - \frac{F(x^{(k)}}{F'(x^{(k)}})
+                \end{align*}
                 \begin{satz}
                     Algorithmus für Lokales Newton-Verfahren
                     \begin{enumerate}
@@ -697,7 +711,7 @@
                 \end{satz}
             \subsubsection{Globalisierung des Newton-Verfahrens}
                 \textbf{Schrittweitenwahl nach Armijo}:\\
-                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben. 
+                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben.
                 Wähle das Größte $\sigma_k \in \{1, \frac{1}{2}, \frac{1}{4}, \dots\}$ mit 
                 \begin{equation*}
                     ||F(x^{(k)} + \sigma_k s^{(k)})||_2^2 \leq ||F(x^{(k)})||_2^2-2\delta \sigma_k ||F(x^{(k)})||_2^2
@@ -716,7 +730,7 @@
             \subsubsection{Grundlagen}
                 \begin{definition}
                     Eine Zahl $\lambda \in \mathbb{C}$ heißt Eigenwert einer Matrix $A \in \mathbb{C}^{n \times n}$,
-                    wenn es einen Vektor $x \in \mathbb{C}^n$ gibt mit 
+                    wenn es einen Vektor $x \in \mathbb{C}^n$ gibt mit
                     \begin{equation*}
                         Ax = \lambda x
                     \end{equation*}
@@ -781,6 +795,7 @@
                     \end{equation*}
                     stetig. Eigenwerte hängen also stetig von der Matrix ab
                 \end{satz}
+                \newpage
                 \begin{satz}
                     Es sei $A= (a_{ij}) \in \mathbb{C}^{n\times n}$ beliebig
                     \begin{enumerate}[label=\alph*)]
@@ -790,6 +805,7 @@
                         \end{align*}
                         \item ist die Vereinigung $G_1$ von k Gershgorin-Kreisen disjunkt von der Vereinigung $G_2$ der restlichen n-k Gershgorin-Kreise, dann enthält $G_1$ genau k EWs und $G_2$ genau n-k EWs von A
                     \end{enumerate}
+                    Eine reelle Matrix (alle Elemente sind reelle Zahlen) hat nur reelle sowie komplex-konjugierte Paare von Eigenwerten. Wenn ein Gershgorin-Kreis nun nur einen Eigenwert beinhaltet, kann dieser daher auch nur reell sein.
                 \end{satz}
                 \begin{satz}
                     (Bauer/Fike). Es sei $A \in \mathbb{C}^{n \times n}$ diagonalisierbar,also
@@ -802,6 +818,7 @@
                     \end{equation*}
                     mit $\text{cond}_2(T):= ||T||_2||T^{-1}||_2$; $\text{cond}_2(T):= 1$ für A hermitisch 
                 \end{satz}
+                \newpage
         \subsection{Die Vektoriteration}
             \subsubsection{Definition und Eigenschaften der Vektoriteration}
                 \begin{definition}
@@ -985,6 +1002,7 @@
                     \item Für $r_{xy} < 0$ streng monoton steigende Gerade
                     \item Für $r_{xy} = 0$ horizontale Gerade
                 \end{itemize}
+                \newpage
         \subsection{Zufallsexperimente und Wahrscheinlichkeit}
             \subsubsection{Zufallsexperimente}
                 \begin{definition}
@@ -1052,7 +1070,8 @@
                 \begin{equation*}
                     \dfrac{\binom{N_1}{k_1}\binom{N_2}{k_2}}{\binom{N}{k}}
                 \end{equation*}
-                mit $N = N_1 + N_2$ und $k = k_1+ k_2$
+                mit $N = N_1 + N_2$ und $k = k_1+ k_2$\\
+                Bsp: Bestimmte Karten auf der Hand
         \subsection{Bedingte Wahrscheinlichkeit, Unabhängigkeiten}
             \subsubsection{Bedingte Wahrscheinlichkeit}
                 \textbf{Bedingte Wahrscheinlichkeit von A unter der Bedingung B}
@@ -1560,7 +1579,7 @@
                         \item $I \subseteq \mathbb{R}$ so wählen, dass unter $H_0$ gilt $P(T(X_1,\dots,X_n)\in I) \leq \alpha$
                     \end{enumerate}
             \subsection{Wichtige Tests bei Normalverteilungsannahme}
-                \subsubsection*{Gauß-Test}
+                \subsubsection*{Gauß-Test , testen für $\mu$ bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
                      \begin{enumerate}
                          \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2_0)$-verteilt $\sigma^2_0$ bekannt
                          \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$     
@@ -1571,7 +1590,7 @@
                          \item Ablehnung Falls\\
                                a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
                      \end{enumerate}
-                \subsubsection*{t-Test}
+                \subsubsection*{t-Test , testen für $\mu$ bei unbekannter Varianz $\sigma^2$}
                      \begin{enumerate}
                          \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\sigma^2$ unbekannt
                          \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$     
