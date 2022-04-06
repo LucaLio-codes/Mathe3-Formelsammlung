@@ -45,6 +45,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz}
+\usetikzlibrary{tikzmark,calc}
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{enumitem}
@@ -113,12 +114,29 @@
         \begin{equation*}
             f_{[x_j,\dots,x_{k+j}]} = \dfrac{f_{[x_{j+1} \dots, x_{j+k}]} - f_{[x_{j} \dots, x_{j+k-1}]}}{x_{j+k} - x_j} = \dfrac{f_{\text{unten}} - f_{\text{oben}}}{x_{\text{unten}} - x_{\text{oben}}}
         \end{equation*}
-       \begin{figure}[ht]
-           \includegraphics[scale=0.3]{images/grafik.png}
-           \centering
-       \end{figure}
-       Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
-
+        Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
+        \begin{center}
+            \begin{tabular}{c | c c c}
+                $x_0$   & $f_{[x_0]} = y_0$ \tikzmark{0}  &                  & \\
+                        &                   & \tikzmark{01l} $f_{[x_0,x_1]}$ \tikzmark{01r} & \\
+                $x_1$   & $f_{[x_1]} = y_1$ \tikzmark{1}  &                  & \tikzmark{012}$f_{[x_0,x_1,x_2]}$\\
+                        &                   & \tikzmark{12l} $f_{[x_1,x_2]}$ \tikzmark{12r} & \\
+                $x_2$   & $f_{[x_2]} = y_2$ \tikzmark{2}  &                  & \\
+                $\vdots$&                   &                                & \\
+            \end{tabular}
+        \end{center}
+        \begin{tikzpicture}[overlay,remember picture,shorten >=5pt,shorten <=1pt]
+                            \draw [->] ({pic cs:0}) -- ({pic cs:01l});
+                            \draw [->] ({pic cs:1}) -- ({pic cs:01l});
+                            \draw [->] ({pic cs:1}) -- ({pic cs:12l});
+                            \draw [->] ({pic cs:2}) -- ({pic cs:12l});
+                            \draw [->] ({pic cs:01r}) -- ({pic cs:012});
+                            \draw [->] ({pic cs:12r}) -- ({pic cs:012});
+        \end{tikzpicture}
+        %\begin{figure}[ht]
+        %    \includegraphics[scale=0.3]{images/grafik.png}
+        %    \centering
+        %\end{figure}
        Hinweis: Man kann Zeilen vertauschen. Das heißt wenn viele $f_{[x]} = 0$ lohnt es sich meist diese nach oben zu tauschen.
 
        \subsubsection{Fehlerabschätzung}
