@@ -114,7 +114,7 @@
         \begin{equation*}
             f_{[x_j,\dots,x_{k+j}]} = \dfrac{f_{[x_{j+1} \dots, x_{j+k}]} - f_{[x_{j} \dots, x_{j+k-1}]}}{x_{j+k} - x_j} = \dfrac{f_{\text{unten}} - f_{\text{oben}}}{x_{\text{unten}} - x_{\text{oben}}}
         \end{equation*}
-        Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
+        Die oberste Zeile ab dem Strich sind dann die $\gamma_i$
         \begin{center}
             \begin{tabular}{c | c c c}
                 $x_0$   & $f_{[x_0]} = y_0$ \tikzmark{0}  &                  & \\
@@ -545,8 +545,7 @@
                 \end{equation*}
             \end{definition}
         \subsection{Gaußsche Eliminationsverfahren, Dreickszerlegung einer Matrix}
-            \subsubsection{Lösung gestaffelter Gleichungssysteme}
-                Subsection Damit Nummerierung stimmt
+            \stepcounter{subsubsection}
             \subsubsection{Gaußsches Eliminationsverfahren}
                 \begin{enumerate}
                     \item Wähle ein Pivotelement $a^{(k)}_{rk} \not= 0, k\leq r\leq n$ vertausche Zeile $k$ und $r$ $\rightsquigarrow (\tilde{A}^{(k)}, \tilde{b}^{(k)}) $
@@ -555,7 +554,7 @@
                     \begin{equation*}
                         l_{ik} = \dfrac{\tilde{a}^{(k)}_{ik}}{\tilde{a}^{(k)}_{kk}}
                     \end{equation*}
-                    der k-ten Gleichun von der i-ten gleichung
+                    der k-ten Gleichung von der i-ten Gleichung
                 \end{enumerate}
             \subsubsection{Pivotstrategie}
             \begin{itemize}
@@ -625,7 +624,7 @@
         wobei $\tilde{L} = LD^{-1}, \mbox{ } \tilde{R} = DL^T$
     \end{satz}
     \begin{satz}
-        Cholesky-Verfahen zur Berechnung der Zerlegung $LL^T = A$\\
+        Cholesky-Verfahren zur Berechnung der Zerlegung $LL^T = A$\\
         Für $j= 1,\dots ,n$
         \begin{equation*}
             l_{jj} =\sqrt{a_{jj}-\sum^{j-1}_{k=1}l_{jk}^2}
